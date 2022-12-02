@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myHotel</title>
+
+    <!--fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@200&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="css/normalize.css" as="style"> <!-- para cargar mas rapido -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="preload" href="css/styles.css" as="style"> <!-- para cargar mas rapido -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="website icon" type="png" href="img/logo_browser.png">
+</head>
+<body>
+    
+    <header>
+        <nav class="navegador">
+            <a href="index.html">
+                <img src="img/logo.png" width="250" height="100">
+            </a>
+
+            <div class="navegador_no_logo">
+                <a href="#">
+                    <img src="img/band_inglesa.png" width="66,66" height="40">
+                </a>
+    
+                <a href="preguntas_frecuentes.html">
+                    <img src="img/help.png" width="40" height="40">
+                </a>
+                
+                <button class="boton_naranja" onclick="location.href='registro_alojamiento.html'">Registra tu alojamiento</button>
+                <button class="boton_naranja"onclick="location.href='inicio_sesion.html'">Inicio sesion</button>
+
+            </div>
+        </nav>
+    </header>
+
+
+    <section class="anchura_pagina dos_columnas_pago_reserva">
+
+        <div class="parte_izq_pago_reserva">
+            <p style="text-align: center;">
+                Tu seleción
+            </p>
+
+            <div class="cont_entrada_salida">
+                <p>
+                    Entrada<br> 
+                    Hora: 10:00 <br>
+                    Fecha: 24/12/2022
+                </p>
+                <p>
+                    Salida<br> 
+                    Hora: 10:00 <br>
+                    Fecha: 24/12/2022
+                </p>
+            </div>
+
+            <p>
+                Duración de la estancia:<br>x noches
+            </p>
+
+            <p>
+                Desglose de precio:<br>
+            </p>
+
+        </div>
+
+
+        <div class="parte_drch_pago_reserva">
+            <p style="text-align: center;">
+                Tus datos
+            </p>
+
+            <div class="parte_drch_img_info">
+                <img src="img/ejemplo1.PNG" width="250" height="250">
+                <div class="parte_drch_info">
+                    <p class="titulo_hotel_pago_reserva">
+                        SPA RESORT BUENAS TARDES
+                    </p>
+                    <div class="location_descr_parte_drch">
+                        <img src="img/location.png" height="30" width="30">
+                        <p>
+                            calle miarma 52
+                        </p>
+                    </div>
+                    <p>
+                        8,4
+                    </p>
+
+                </div>
+            </div>
+
+
+            <form action="" class="form_pago_reserva">
+                <label>Nombre</label>
+                    <input type="text" placeholder="Nombre">
+
+                    <label>Apellido</label>
+                    <input type="text" placeholder="Apellido">
+
+                
+                    <label>Telefono</label>
+                    <input type="tel" placeholder="Telefono">
+                    
+                    <label style="margin-top: 30px;">¿Para quien es la reserva?</label>
+                    <label>Para mí</label>
+                    <input type="radio" placeholder="Telefono">
+
+                    <label>Para otra persona</label>
+                    <input type="radio" placeholder="Telefono">
+
+                    <label>Nombre Cliente</label>
+                    <input type="text" placeholder="Nombre">
+
+                    <label>Apellido Cliente</label>
+                    <input type="text" placeholder="Apellido">
+
+                    <label style="margin-top: 30px;">Peticiones especiales</label>
+                    <textarea style="width: 280px; height: 100px;"></textarea>
+
+                    <label style="margin-top: 30px;">Método de pago</label>
+                    <label>Nombre completo del titular</label>
+                    <input type="text" placeholder="Nombre">
+
+                    <label>Número de tarjeta</label>
+                    <input type="number" placeholder="xxxx xxxx xxxx xxxx">
+
+                    <label>Fecha de vencimiento</label>
+                    <input type="number" placeholder="mm-aaaa">
+
+                    <label>CVV</label>
+                    <input type="number" placeholder="xxx">
+
+
+                    <input type="button" value="Enviar" onclick="location.href='index.html'" style="width: 140px">
+
+            </form>
+
+
+        </div>
+
+
+
+
+    </section>
+
+
+</body>
+</html>

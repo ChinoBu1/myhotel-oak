@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myHotel</title>
+
+    <!--fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@200&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="css/normalize.css" as="style"> <!-- para cargar mas rapido -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="preload" href="css/styles.css" as="style"> <!-- para cargar mas rapido -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="website icon" type="png" href="img/logo_browser.png">
+</head>
+<body>
+    <header>
+        <nav class="navegador">
+            <a href="index.html">
+                <img src="img/logo.png" width="250" height="100">
+            </a>
+
+            <div class="navegador_no_logo">
+                <a href="#">
+                    <img src="img/band_inglesa.png" width="66,66" height="40">
+                </a>
+    
+                <a href="preguntas_frecuentes.html">
+                    <img src="img/help.png" width="40" height="40">
+                </a>
+                
+                <button class="boton_naranja" onclick="location.href='registro_alojamiento.html'">Registra tu alojamiento</button>
+                <button class="boton_naranja"onclick="location.href='inicio_sesion.html'">Inicio sesion</button>
+
+            </div>
+        </nav>
+    </header>
+
+    <section class="anchura_pagina"><!--para poner el width igual por todo-->
+    
+        <form action="" class="form_barra_busqueda">
+
+            <input type="text" class="location_text" placeholder="Localizacion">    
+    
+            <input type="date" class="checkin_text" placeholder="Check-in">    
+    
+            <input type="date" class="checkout_text" placeholder="Chek-out">    
+        
+            <input type="number" class="n_pers_text" placeholder="Personas" min="1">
+    
+            <input type="number" class="n_hab_txt" placeholder="Habitaciones" min="1">
+    
+            <input type="button" onclick="location.href='busqueda.html'" value="BUSCAR" style="background-color: yellow;">
+        </form>
+    
+        
+        <div class="titulo_loc">
+            <p style="font-size: 20px;">
+                SPA RESORT BUENAS TARDES
+            </p>
+            <div class="location_descr">
+                <img src="img/location.png" height="30" width="30">
+                <p>
+                    calle miarma 52
+                </p>
+            </div>
+        </div>
+
+
+        <div>
+            FOTOS DONDE CLICAS Y TE SALEN O SOLO UN PAR DE FOTOS
+        </div>
+
+
+        <table style="width: 100%;">
+            <thead>
+                <tr class="first_row">
+                    <th scope="col">
+                        Tipo de habitaciones
+                    </th>
+                    <th scope="col">
+                        Capacidad
+                    </th>
+                    <th scope="col">
+                        Precio
+                    </th>
+                    <th scope="col">
+                        Cantidad
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th style="text-align: left; padding-left: 10px;">
+                        <p>HABITACION DOBLE</p>
+                        <P>Descripcion de la habitacion</P>
+                    </th>
+                    <th>
+                        <img src="img/1usuario.png" width="20px" height="20px">
+                        <img src="img/1usuario.png" width="20px" height="20px">
+                    </th>
+                    <th>
+                        237€
+                    </th>
+                    <th>
+                        <form class="cantidad">
+                            <select style="background-color: white; border: 1px solid black;">
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </form>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <button class="boton_naranja" onclick="location.href='pago_reserva.html'" style="margin-top: 20px;">Reserva</button>
+
+
+
+        
+
+        
+
+    
+    </section>
+    
+</body>
+<footer>
+    Todos los derechos reservados -
+    <a href="terminos_y_condiciones.html" style="color: white;">Términos y condiciones</a>
+</footer>
+</html>

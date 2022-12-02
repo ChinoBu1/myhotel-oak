@@ -1,0 +1,550 @@
+:root{
+    --color_principal: #e99c43;
+    --back_color_principal: #e69334;
+}
+
+html{
+    font-size: 62.5%; /*para hacer mas facil medidas*/
+}
+
+body{
+    font-size: 16px; /*para hacer mas facil medidas*/
+    font-family: 'Krub', sans-serif;
+    margin: 0 0;
+}
+
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+
+
+/*quita flechas de los input types*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none !important;
+  margin: 0 !important;
+}
+
+input[type=number] {
+    appearance: textfield;
+}
+
+input{
+    border: 0;
+}
+
+footer{
+    background-color: var(--back_color_principal);
+    text-align: center;
+    margin-top: 2rem;
+    min-height: 100%;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+footer img{
+    width: 30px;
+    height: 30px;
+    padding-left: 10px;
+    
+}
+
+
+.anchura_pagina{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+
+
+
+
+/****
+    *
+    *
+    *
+    barra navegacion header
+*/
+
+.navegador{
+    background-color: var(--back_color_principal);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-left: 4rem;
+    padding-top: 10px;
+}
+
+.navegador_no_logo{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+    justify-content: right;
+    margin-right: 4rem;
+}
+
+.boton_naranja{
+    background:linear-gradient(to bottom, #e99b43 5%, #e99b43 100%);
+    background-color:#e99b43;
+    border:3px solid #ffffff;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:16px;
+    padding:1.2rem 2rem;
+    text-decoration:none;
+    margin: 0 0;
+    text-align: center;
+}
+
+.boton_naranja:active {
+	position:relative;
+	top:1px;
+}
+
+@media (max-width: 768px) {
+    .navegador{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 20px;
+    }
+    .navegador_no_logo{
+        justify-content: center;
+    }
+}
+
+
+/****
+    *
+    *
+    *
+    imagenes rotativas
+*/
+
+
+.seccion_imagenes_rotativas{
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 40rem;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.slider{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    position: absolute;
+    background-size: contain;
+    overflow: hidden; /*no muestra elementos que hay fuera*/
+}
+
+.slider ul{
+    display: flex;
+    padding: 0;
+    margin: 0;
+    width: 500%; 
+    height: 100%;
+
+    animation: cambio 20s infinite;
+    animation-direction: normal;
+}
+
+.slider li{
+    width: 100%;
+    list-style: none;
+}
+
+.slider img{
+    width: 100%;
+    height: auto;
+}
+
+@keyframes cambio{
+    0% {margin-left: 0;}
+    15% {margin-left: 0;}
+
+    20% {margin-left: -100%;}
+    35% {margin-left: -100%;}
+
+    40% {margin-left: -200%;}
+    55% {margin-left: -200%;}
+    
+    60% {margin-left: -300%;}
+    75% {margin-left: -300%;}
+
+    80% {margin-left: -400%;}
+    95% {margin-left: -400%;}
+}
+
+
+
+
+
+
+/****
+    *
+    *
+    *
+    barra_busqueda
+*/
+
+
+.form_barra_busqueda{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%;
+    border: 0;
+}
+
+.form_barra_busqueda :focus{
+    outline: #ffffff;
+}
+
+.form_barra_busqueda input{
+    background-color: #ffffff;
+    border: 5px solid yellow;
+    font-size: 20px;
+    padding: 5px;
+}
+
+@media (max-width: 1024px) {
+    .form_barra_busqueda{
+        display: flex;
+        flex-direction: column;
+    }
+
+    
+
+}
+
+
+
+
+
+
+
+/****
+    *
+    *
+    *
+    seccion como hacemos
+*/
+
+
+.como_funciona_pasos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.como_funciona_pasos img{
+    width: 20rem;
+}
+.como_funciona_pasos p{
+    text-align: center;
+    font-weight: bold;
+}
+
+@media (max-width:700px) {
+    .como_funciona_pasos{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+
+
+/****
+    *
+    *
+    *
+    pagina busqueda
+*/
+
+.dos_columnas_busqueda{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    column-gap: 4rem;
+}
+
+@media (max-width: 1024px) {
+    .dos_columnas_busqueda{
+        grid-template-columns: 30% 70%;
+
+    }
+}
+
+
+
+
+.parte_izq_busqueda{
+    display: flex;
+    flex-direction: column;
+}
+
+.parte_izq_busqueda form{
+    display: flex;
+    flex-direction: column;
+}
+
+.filtros{
+    margin-top: 2rem;
+    padding: 5px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****
+    *
+    *
+    *
+    busqueda
+*/
+
+.ejemplo{
+    display: flex;
+    border: 1px solid #000000;
+    padding: 10px;
+    column-gap: 10px;
+    margin-right: 4rem;
+}
+
+@media (max-width: 1024px) {
+    .ejemplo{
+        flex-direction: column;
+    }
+    .ejemplo_no_img{
+        flex-direction: column;
+    }
+    .ejemplo_nota_precio_disp{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 481px) {
+    .dos_columnas_busqueda{
+        display: flex;
+        flex-direction: column;
+    }
+    .ejemplo{
+        margin-right: 0;
+    }
+}
+
+.ejemplo_no_img{
+    display: flex;
+    flex-direction: flex;
+}
+
+.ejemplo_nota_precio_disp div{
+    margin-bottom: 70px;
+    text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+/****
+    *
+    *
+    *
+    hotel ejemplo
+*/
+
+
+.titulo_loc{
+    margin-top: 4rem;
+    display: flex;
+}
+
+.location_descr{
+    margin-left: 2rem;
+    display: flex;
+}
+
+
+
+
+
+th, td{
+    border: 1px solid black;
+    
+}
+
+thead th{
+    background-color: rgb(23, 193, 255);
+}
+
+
+
+
+/****
+    *
+    *
+    *
+    inicio sesion
+*/
+
+
+.navegador_inicio_sesion{
+    background-color: var(--back_color_principal);
+    padding-top: 10px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.anchura_pagina_inicio_sesion{
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.anchura_pagina_inicio_sesion form{
+    display: flex;
+    flex-direction: column;
+}
+
+.anchura_pagina_inicio_sesion label{
+    margin-top: 20px;
+}
+
+.anchura_pagina_inicio_sesion input{
+    border-bottom: 1px solid black;
+}
+
+.anchura_pagina_inicio_sesion input:focus{
+    outline: #ffffff;
+}
+
+.boton_inicio_sesion{
+    background-color:#e99b43;
+    border:3px solid #000000;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:16px;
+    padding:1.2rem 2rem;
+    text-decoration:none;
+    margin: 0 0;
+    margin-top: 2rem;
+    text-align: center;
+    width: 40%;
+}
+
+@media (min-width: 768px) {
+   .boton_inicio_sesion{
+    width: 154px;
+   } 
+}
+
+
+
+
+
+
+
+
+/****
+    *
+    *
+    *
+    pago reserva
+*/
+
+.dos_columnas_pago_reserva{
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.parte_izq_pago_reserva{
+    display: flex;
+    flex-direction: column;
+}
+
+.cont_entrada_salida{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media (max-width: 1024px) {
+    .cont_entrada_salida{
+        flex-direction: column;
+    }
+}
+
+
+.parte_drch_pago_reserva{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.parte_drch_img_info{
+    display: flex;
+    flex-direction: row;
+}
+
+.titulo_hotel_pago_reserva{
+    margin: 0 0;
+}
+
+.parte_drch_info{
+    margin-left: 1.5rem;
+}
+
+.location_descr_parte_drch{
+    display: flex;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.form_pago_reserva{
+    display: flex;
+    flex-direction: column;
+}
+
+.form_pago_reserva input{
+    border: 1px solid black;
+    margin-top: 2px;
+    margin-bottom: 8px;
+    width: 140px;
+}
