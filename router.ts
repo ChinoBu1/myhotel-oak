@@ -8,6 +8,15 @@ router
     ctx.response.body = index;
     ctx.response.headers.set("Content-Type", "text/html");
   })
+  .get("/iniciosesion", async (ctx) => {
+    const index = await Deno.readFile(
+      `${Deno.cwd()}/public/incioSesion.html`,
+    );
+    console.log(index);
+
+    ctx.response.body = index;
+    ctx.response.headers.set("Content-Type", "text/html");
+  })
   .get("/img/:img", async (ctx) => {
     const imageBuf = await Deno.readFile(
       `${Deno.cwd()}/public/img/${ctx.params.img}`,
