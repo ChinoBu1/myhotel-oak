@@ -8,13 +8,9 @@ router
     ctx.response.body = index;
     ctx.response.headers.set("Content-Type", "text/html");
   })
-  .get("/iniciosesion", async (ctx) => {
-    const index = await Deno.readFile(
-      `${Deno.cwd()}/public/incioSesion.html`,
-    );
-    console.log(index);
-
-    ctx.response.body = index;
+  .get("/inicioSesion", async (ctx) => {
+    const page = await Deno.readFile(`${Deno.cwd()}/public/inicioSesion.html`);
+    ctx.response.body = page;
     ctx.response.headers.set("Content-Type", "text/html");
   })
   .get("/img/:img", async (ctx) => {
@@ -25,13 +21,29 @@ router
     ctx.response.headers.set("Content-Type", "image/png");
   })
   .get("/css/:css", async (ctx) => {
-    const index = await Deno.readFile(
+    const css = await Deno.readFile(
       `${Deno.cwd()}/public/css/${ctx.params.css}`,
     );
-    ctx.response.body = index;
+    ctx.response.body = css;
     ctx.response.headers.set("Content-Type", "text/css");
   })
-  .get("/persona.ts", async (ctx) => {
-    ctx.response.body = await persona.getAll();
+  .get("/script/:script", async (ctx) => {
+    const script = await Deno.readFile(
+      `${Deno.cwd()}/public/script/${ctx.params.script}`,
+    );
+    ctx.response.body = script;
+    ctx.response.headers.set("Content-Type", "application/javascript");
+  })
+  .get("/api/persona.ts", async (ctx) => {
+    if (!ctx.request.url.searchParams) {
+      ctx.response.body = await persona.getAll();
+    } else if (
+      ctx.request.url.searchParams.has("Email") &&
+      ctx.request.url.searchParams.has("Pasword")
+    ) {
+      ctx.response.body = await persona.getBiEmailandPass(
+        ctx.request.url.searchParams,
+      );
+    }
   });
 export default router;
