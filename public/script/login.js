@@ -11,6 +11,9 @@ form.addEventListener('submit', async (e) => {
         alert("Usuario no encontrado");
     } else {
         sessionStorage.setItem("login", JSON.stringify(user))
+        if(formData.get('Sesion')){
+            localStorage.setItem("login", JSON.stringify(user))
+        }
         location.replace("/")
     }
 });

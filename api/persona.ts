@@ -1,3 +1,4 @@
+import { FormDataReader } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import client from "../db.ts";
 
 export default {
@@ -15,7 +16,15 @@ export default {
     const Pass = urlSearch.get("Pasword");
     const Email = urlSearch.get("Email");
     return await client.query(
-      `SELECT * from persona WHERE Pasword = '${Pass}' AND Email = '${Email}'`,
+      `SELECT * FROM persona WHERE Pasword = '${Pass}' AND Email = '${Email}'`,
+    );
+  },
+  async registerUser(form: FormDataReader) {
+    const data = await form.read();
+    console.log(data);
+
+    return await client.query(
+      `INSERT INTO persona VALUES ('${data.fields.DNI}', '${data.fields.Nombre}', '${data.fields.Apellidos}', '${data.fields.Email}','${data.fields.Pasword}', '${data.fields.Telefono}', 2)`,
     );
   },
 };

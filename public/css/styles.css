@@ -1,19 +1,23 @@
-:root{
+:root {
     --color_principal: #e99c43;
     --back_color_principal: #e69334;
 }
 
-html{
-    font-size: 62.5%; /*para hacer mas facil medidas*/
+html {
+    font-size: 62.5%;
+    /*para hacer mas facil medidas*/
 }
 
-body{
-    font-size: 16px; /*para hacer mas facil medidas*/
+body {
+    font-size: 16px;
+    /*para hacer mas facil medidas*/
     font-family: 'Krub', sans-serif;
     margin: 0 0;
 }
 
-*, *::before, *::after{
+*,
+*::before,
+*::after {
     box-sizing: inherit;
 }
 
@@ -21,19 +25,19 @@ body{
 /*quita flechas de los input types*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  appearance: none !important;
-  margin: 0 !important;
+    appearance: none !important;
+    margin: 0 !important;
 }
 
 input[type=number] {
     appearance: textfield;
 }
 
-input{
+input {
     border: 0;
 }
 
-footer{
+footer {
     background-color: var(--back_color_principal);
     text-align: center;
     margin-top: 2rem;
@@ -42,15 +46,15 @@ footer{
     font-size: 20px;
 }
 
-footer img{
+footer img {
     width: 30px;
     height: 30px;
     padding-left: 10px;
-    
+
 }
 
 
-.anchura_pagina{
+.anchura_pagina {
     margin-left: 5%;
     margin-right: 5%;
 }
@@ -67,7 +71,7 @@ footer img{
     barra navegacion header
 */
 
-.navegador{
+.navegador {
     background-color: var(--back_color_principal);
     display: grid;
     grid-template-columns: 50% 50%;
@@ -75,7 +79,7 @@ footer img{
     padding-top: 10px;
 }
 
-.navegador_no_logo{
+.navegador_no_logo {
     grid-column: 2/3;
     grid-row: 1/2;
     display: flex;
@@ -86,34 +90,35 @@ footer img{
     margin-right: 4rem;
 }
 
-.boton_naranja{
-    background:linear-gradient(to bottom, #e99b43 5%, #e99b43 100%);
-    background-color:#e99b43;
-    border:3px solid #ffffff;
-    cursor:pointer;
-    color:#ffffff;
-    font-family:Arial;
-    font-size:16px;
-    padding:1.2rem 2rem;
-    text-decoration:none;
+.boton_naranja {
+    background: linear-gradient(to bottom, #e99b43 5%, #e99b43 100%);
+    background-color: #e99b43;
+    border: 3px solid #ffffff;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 16px;
+    padding: 1.2rem 2rem;
+    text-decoration: none;
     margin: 0 0;
     text-align: center;
 }
 
 .boton_naranja:active {
-	position:relative;
-	top:1px;
+    position: relative;
+    top: 1px;
 }
 
 @media (max-width: 768px) {
-    .navegador{
+    .navegador {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding-bottom: 20px;
     }
-    .navegador_no_logo{
+
+    .navegador_no_logo {
         justify-content: center;
     }
 }
@@ -127,7 +132,7 @@ footer img{
 */
 
 
-.seccion_imagenes_rotativas{
+.seccion_imagenes_rotativas {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -139,51 +144,77 @@ footer img{
 
 }
 
-.slider{
+.slider {
     width: 100%;
     height: 100%;
     margin: auto;
     position: absolute;
     background-size: contain;
-    overflow: hidden; /*no muestra elementos que hay fuera*/
+    overflow: hidden;
+    /*no muestra elementos que hay fuera*/
 }
 
-.slider ul{
+.slider ul {
     display: flex;
     padding: 0;
     margin: 0;
-    width: 500%; 
+    width: 500%;
     height: 100%;
 
     animation: cambio 20s infinite;
     animation-direction: normal;
 }
 
-.slider li{
+.slider li {
     width: 100%;
     list-style: none;
 }
 
-.slider img{
+.slider img {
     width: 100%;
     height: auto;
 }
 
-@keyframes cambio{
-    0% {margin-left: 0;}
-    15% {margin-left: 0;}
+@keyframes cambio {
+    0% {
+        margin-left: 0;
+    }
 
-    20% {margin-left: -100%;}
-    35% {margin-left: -100%;}
+    15% {
+        margin-left: 0;
+    }
 
-    40% {margin-left: -200%;}
-    55% {margin-left: -200%;}
-    
-    60% {margin-left: -300%;}
-    75% {margin-left: -300%;}
+    20% {
+        margin-left: -100%;
+    }
 
-    80% {margin-left: -400%;}
-    95% {margin-left: -400%;}
+    35% {
+        margin-left: -100%;
+    }
+
+    40% {
+        margin-left: -200%;
+    }
+
+    55% {
+        margin-left: -200%;
+    }
+
+    60% {
+        margin-left: -300%;
+    }
+
+    75% {
+        margin-left: -300%;
+    }
+
+    80% {
+        margin-left: -400%;
+    }
+
+    95% {
+        margin-left: -400%;
+    }
 }
 
 
@@ -199,18 +230,18 @@ footer img{
 */
 
 
-.form_barra_busqueda{
+.form_barra_busqueda {
     margin-top: 2rem;
     display: grid;
     grid-template-columns: 16.66% 16.66% 16.66% 16.66% 16.66% 16.66%;
     border: 0;
 }
 
-.form_barra_busqueda :focus{
+.form_barra_busqueda :focus {
     outline: #ffffff;
 }
 
-.form_barra_busqueda input{
+.form_barra_busqueda input {
     background-color: #ffffff;
     border: 5px solid yellow;
     font-size: 20px;
@@ -218,12 +249,12 @@ footer img{
 }
 
 @media (max-width: 1024px) {
-    .form_barra_busqueda{
+    .form_barra_busqueda {
         display: flex;
         flex-direction: column;
     }
 
-    
+
 
 }
 
@@ -241,22 +272,23 @@ footer img{
 */
 
 
-.como_funciona_pasos{
+.como_funciona_pasos {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.como_funciona_pasos img{
+.como_funciona_pasos img {
     width: 20rem;
 }
-.como_funciona_pasos p{
+
+.como_funciona_pasos p {
     text-align: center;
     font-weight: bold;
 }
 
 @media (max-width:700px) {
-    .como_funciona_pasos{
+    .como_funciona_pasos {
         display: flex;
         flex-direction: column;
     }
@@ -275,14 +307,14 @@ footer img{
     pagina busqueda
 */
 
-.dos_columnas_busqueda{
+.dos_columnas_busqueda {
     display: grid;
     grid-template-columns: 20% 80%;
     column-gap: 4rem;
 }
 
 @media (max-width: 1024px) {
-    .dos_columnas_busqueda{
+    .dos_columnas_busqueda {
         grid-template-columns: 30% 70%;
 
     }
@@ -291,17 +323,17 @@ footer img{
 
 
 
-.parte_izq_busqueda{
+.parte_izq_busqueda {
     display: flex;
     flex-direction: column;
 }
 
-.parte_izq_busqueda form{
+.parte_izq_busqueda form {
     display: flex;
     flex-direction: column;
 }
 
-.filtros{
+.filtros {
     margin-top: 2rem;
     padding: 5px;
     border: 1px solid black;
@@ -328,7 +360,7 @@ footer img{
     busqueda
 */
 
-.ejemplo{
+.ejemplo {
     display: flex;
     border: 1px solid #000000;
     padding: 10px;
@@ -337,34 +369,37 @@ footer img{
 }
 
 @media (max-width: 1024px) {
-    .ejemplo{
+    .ejemplo {
         flex-direction: column;
     }
-    .ejemplo_no_img{
+
+    .ejemplo_no_img {
         flex-direction: column;
     }
-    .ejemplo_nota_precio_disp{
+
+    .ejemplo_nota_precio_disp {
         display: flex;
         justify-content: space-between;
     }
 }
 
 @media (max-width: 481px) {
-    .dos_columnas_busqueda{
+    .dos_columnas_busqueda {
         display: flex;
         flex-direction: column;
     }
-    .ejemplo{
+
+    .ejemplo {
         margin-right: 0;
     }
 }
 
-.ejemplo_no_img{
+.ejemplo_no_img {
     display: flex;
     flex-direction: flex;
 }
 
-.ejemplo_nota_precio_disp div{
+.ejemplo_nota_precio_disp div {
     margin-bottom: 70px;
     text-align: right;
 }
@@ -386,12 +421,12 @@ footer img{
 */
 
 
-.titulo_loc{
+.titulo_loc {
     margin-top: 4rem;
     display: flex;
 }
 
-.location_descr{
+.location_descr {
     margin-left: 2rem;
     display: flex;
 }
@@ -400,12 +435,13 @@ footer img{
 
 
 
-th, td{
+th,
+td {
     border: 1px solid black;
-    
+
 }
 
-thead th{
+thead th {
     background-color: rgb(23, 193, 255);
 }
 
@@ -420,7 +456,7 @@ thead th{
 */
 
 
-.navegador_inicio_sesion{
+.navegador_inicio_sesion {
     background-color: var(--back_color_principal);
     padding-top: 10px;
     padding-bottom: 20px;
@@ -428,7 +464,7 @@ thead th{
     justify-content: center;
 }
 
-.anchura_pagina_inicio_sesion{
+.anchura_pagina_inicio_sesion {
     margin-left: 25%;
     margin-right: 25%;
     margin-top: 4rem;
@@ -436,32 +472,43 @@ thead th{
     flex-direction: column;
 }
 
-.anchura_pagina_inicio_sesion form{
+.anchura_pagina_inicio_sesion form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    /* change this to row instead of 'column' */
+    flex-wrap: wrap;
+    /* added flex-wrap */
 }
 
-.anchura_pagina_inicio_sesion label{
+.anchura_pagina_inicio_sesion label {
     margin-top: 20px;
+    box-sizing: border-box;
+    /* I added */
+    width: 100%;
+    /* I added */
 }
 
-.anchura_pagina_inicio_sesion input{
+.anchura_pagina_inicio_sesion input {
     border-bottom: 1px solid black;
+    box-sizing: border-box;
+    /* I added */
+    width: 100%;
+    /* I added */
 }
 
-.anchura_pagina_inicio_sesion input:focus{
+.anchura_pagina_inicio_sesion input:focus {
     outline: #ffffff;
 }
 
-.boton_inicio_sesion{
-    background-color:#e99b43;
-    border:3px solid #000000;
-    cursor:pointer;
-    color:#ffffff;
-    font-family:Arial;
-    font-size:16px;
-    padding:1.2rem 2rem;
-    text-decoration:none;
+.boton_inicio_sesion {
+    background-color: #e99b43;
+    border: 3px solid #000000;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 16px;
+    padding: 1.2rem 2rem;
+    text-decoration: none;
     margin: 0 0;
     margin-top: 2rem;
     text-align: center;
@@ -469,9 +516,9 @@ thead th{
 }
 
 @media (min-width: 768px) {
-   .boton_inicio_sesion{
-    width: 154px;
-   } 
+    .boton_inicio_sesion {
+        width: 154px;
+    }
 }
 
 
@@ -488,61 +535,61 @@ thead th{
     pago reserva
 */
 
-.dos_columnas_pago_reserva{
+.dos_columnas_pago_reserva {
     display: grid;
     grid-template-columns: 30% 70%;
 }
 
-.parte_izq_pago_reserva{
+.parte_izq_pago_reserva {
     display: flex;
     flex-direction: column;
 }
 
-.cont_entrada_salida{
+.cont_entrada_salida {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
 @media (max-width: 1024px) {
-    .cont_entrada_salida{
+    .cont_entrada_salida {
         flex-direction: column;
     }
 }
 
 
-.parte_drch_pago_reserva{
+.parte_drch_pago_reserva {
     margin-left: 2rem;
     margin-right: 2rem;
     display: flex;
     flex-direction: column;
 }
 
-.parte_drch_img_info{
+.parte_drch_img_info {
     display: flex;
     flex-direction: row;
 }
 
-.titulo_hotel_pago_reserva{
+.titulo_hotel_pago_reserva {
     margin: 0 0;
 }
 
-.parte_drch_info{
+.parte_drch_info {
     margin-left: 1.5rem;
 }
 
-.location_descr_parte_drch{
+.location_descr_parte_drch {
     display: flex;
     margin-top: 80px;
     margin-bottom: 80px;
 }
 
-.form_pago_reserva{
+.form_pago_reserva {
     display: flex;
     flex-direction: column;
 }
 
-.form_pago_reserva input{
+.form_pago_reserva input {
     border: 1px solid black;
     margin-top: 2px;
     margin-bottom: 8px;

@@ -13,6 +13,16 @@ router
     ctx.response.body = page;
     ctx.response.headers.set("Content-Type", "text/html");
   })
+  .get("/registro", async (ctx) => {
+    const page = await Deno.readFile(`${Deno.cwd()}/public/registro.html`);
+    ctx.response.body = page;
+    ctx.response.headers.set("Content-Type", "text/html");
+  })
+  .get("/cuenta", async (ctx) => {
+    const page = await Deno.readFile(`${Deno.cwd()}/public/cuenta.html`);
+    ctx.response.body = page;
+    ctx.response.headers.set("Content-Type", "text/html");
+  })
   .get("/img/:img", async (ctx) => {
     const imageBuf = await Deno.readFile(
       `${Deno.cwd()}/public/img/${ctx.params.img}`,
@@ -45,5 +55,8 @@ router
         ctx.request.url.searchParams,
       );
     }
+  })
+  .post("/api/persona.ts", async (ctx) => {
+    ctx.response.body = await persona.registerUser(ctx.request.body().value);
   });
 export default router;

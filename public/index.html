@@ -22,10 +22,10 @@
 
 
 <body>
-
+    <script src="/script/index.js" type="module"></script>
     <header>
         <nav class="navegador">
-            <a href="index.html">
+            <a href="/">
                 <img src="img/logo.png" width="250" height="100">
             </a>
 
@@ -38,10 +38,15 @@
                     <img src="img/help.png" width="40" height="40">
                 </a>
 
-                <button class="boton_naranja" onclick="location.href='registro_alojamiento.html'">Registra tu
+                <button class="boton_naranja hostelero" style="display: none;"
+                    onclick="location.href='registro_alojamiento.html'">Registra tu
                     alojamiento</button>
-                <a href="/inicioSesion"><button class="boton_naranja">Inicio sesion</button></a>
-                <button class="boton_naranja" onclick="location.href='inicio_sesion'">Registrate</button>
+                <button class="boton_naranja nosesion" onclick="location.href='/inicioSesion'">Inicio Sesion</button>
+                <button class="boton_naranja nosesion" onclick="location.href='/registro'">Registrate</button>
+                <div class="sesion" id="nombre"></div>
+                <button class="boton_naranja sesion" style="display: none;" id="logout">Log out</button>
+
+
 
             </div>
         </nav>
