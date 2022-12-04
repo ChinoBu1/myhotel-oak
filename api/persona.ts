@@ -21,8 +21,6 @@ export default {
   },
   async registerUser(form: FormDataReader) {
     const data = await form.read();
-    console.log(data);
-
     return await client.query(
       `INSERT INTO persona VALUES ('${data.fields.DNI}', '${data.fields.Nombre}', '${data.fields.Apellidos}', '${data.fields.Email}','${data.fields.Pasword}', '${data.fields.Telefono}', 2)`,
     );

@@ -30,13 +30,46 @@
         </nav>
     </header>
 
-
+    <script src="/script/registroHotel.js" type="module"></script>
     <section class="anchura_pagina_inicio_sesion">
 
+        <form action="" method="post" id="registroHotel">
+            <label for="Nombre">Nombre</label>
+            <input type="text" name="Nombre" id="Nombre">
 
+            <label for="Telefono">Telefono</label>
+            <input type="tel" name="Telefono" id="Telefono">
 
+            <label for="Direccion">Direccion</label>
+            <input type="text" name="Direccion" id="Direccion">
+            <label for="Estrellas">Estrellas</label>
+            <select name="Estrellas" id="Estrellas">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <label for="Regimen"></label>
+            <select name="Regimen" id="Regimen">
+                <option value="1">todo incluido</option>
+                <option value="2">media pension</option>
+                <option value="3">desayuno</option>
+                <option value="4">solo alojamiento</option>
+            </select>
+            <label for="Wifi">Wifi</label>
+            <input type="checkbox" name="Wifi" id="Wifi">
+            <label for="Parking">Parking</label>
+            <input type="checkbox" name="Parking" id="Parking">
+            <label for="Piscina">Piscina</label>
+            <input type="checkbox" name="Piscina" id="Piscina">
+            <label for="Ciudad">Ciudad</label>
+            <input type="text" name="Ciudad" id="Ciudad">
+            <label for="CodigoPostal">Codigo Postal</label>
+            <input type="text" name="CodigoPostal" id="CodigoPostal">
+            <input type="submit" value="Registrar hotel">
 
-
+        </form>
 
 
 

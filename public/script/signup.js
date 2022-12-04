@@ -7,7 +7,7 @@ form.addEventListener('submit', async (e) => {
     if (formData.get('Pasword') != formData.get('Pasword2')){
         alert('La contraseña y confirmacion debe ser iguales')
     } else {
-        const resp = await fetch(`/api/persona.ts`, {
+        const _resp = await fetch(`/api/persona.ts`, {
         method: 'POST',
         body: formData
         });

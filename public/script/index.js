@@ -4,7 +4,7 @@ const paraHostelero = document.getElementsByClassName('hostelero');
 const nombre = document.getElementById('nombre');
 const logout = document.getElementById('logout');
 
-logout.addEventListener('click',(e) => {
+logout.addEventListener('click',(_e) => {
     localStorage.removeItem('login');
     sessionStorage.removeItem('login');
     location.replace('/')
@@ -29,6 +29,8 @@ if (sessionStorage.getItem('login')){
     }
     const ancor = document.createElement('a')
     ancor.href = "/cuenta"
+    ancor.style.textDecoration = "none"
+    ancor.style.color = "black"
     ancor.innerHTML = Sesion.Nombre
     nombre.appendChild(ancor);
 }
