@@ -64,6 +64,13 @@ router
       );
     }
   })
+  .get("/api/hotel.ts", async (ctx) => {
+    if (ctx.request.url.searchParams.has("Administrador")) {
+      ctx.response.body = await hotel.getByAdministrador(
+        ctx.request.url.searchParams,
+      );
+    }
+  })
   .post("/api/persona.ts", async (ctx) => {
     ctx.response.body = await persona.registerUser(ctx.request.body().value);
   })

@@ -31,6 +31,6 @@ if (sessionStorage.getItem('login')){
     ancor.href = "/cuenta"
     ancor.style.textDecoration = "none"
     ancor.style.color = "black"
-    ancor.innerHTML = Sesion.Nombre
+    ancor.innerHTML = Sesion.Nombre + ' ' + Sesion.Apellidos
     nombre.appendChild(ancor);
 }
