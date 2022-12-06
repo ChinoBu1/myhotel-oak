@@ -1,13 +1,20 @@
 import { Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import hotel from "./api/hotel.ts";
 import persona from "./api/persona.ts";
+import habitacion from "./api/habitacion.ts";
 
 const router = new Router();
 router
   .get("/", async (ctx) => {
-    const index = await Deno.readFile(`${Deno.cwd()}/public/index.html`);
-    ctx.response.body = index;
-    ctx.response.headers.set("Content-Type", "text/html");
+    if (ctx.request.url.searchParams.has("Localizacion")) {
+      const index = await Deno.readFile(`${Deno.cwd()}/public/busqueda.html`);
+      ctx.response.body = index;
+      ctx.response.headers.set("Content-Type", "text/html");
+    } else {
+      const index = await Deno.readFile(`${Deno.cwd()}/public/index.html`);
+      ctx.response.body = index;
+      ctx.response.headers.set("Content-Type", "text/html");
+    }
   })
   .get("/inicioSesion", async (ctx) => {
     const page = await Deno.readFile(`${Deno.cwd()}/public/inicioSesion.html`);
@@ -53,7 +60,7 @@ router
     ctx.response.headers.set("Content-Type", "application/javascript");
   })
   .get("/api/persona.ts", async (ctx) => {
-    if (!ctx.request.url.searchParams) {
+    if (!ctx.request.url.searchParams.has("Email")) {
       ctx.response.body = await persona.getAll();
     } else if (
       ctx.request.url.searchParams.has("Email") &&
@@ -67,6 +74,13 @@ router
   .get("/api/hotel.ts", async (ctx) => {
     if (ctx.request.url.searchParams.has("Administrador")) {
       ctx.response.body = await hotel.getByAdministrador(
+        ctx.request.url.searchParams,
+      );
+    }
+  })
+  .get("/api/hotel/habitacion.ts", async (ctx) => {
+    if (ctx.request.url.searchParams.has("idHotel")) {
+      ctx.response.body = await habitacion.getByHotel(
         ctx.request.url.searchParams,
       );
     }

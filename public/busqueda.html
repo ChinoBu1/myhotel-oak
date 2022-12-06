@@ -51,98 +51,106 @@
             </div>
 
 
+        </nav>
+    </header>
+    <section class="anchura_pagina dos_columnas_busqueda">
 
-            <section class="anchura_pagina dos_columnas_busqueda">
+        <div class="parte_izq_busqueda">
+            <form action="" class="form_barra_busqueda">
 
-                <div class="parte_izq_busqueda">
-                    <form action="" class="form_barra_busqueda">
+                <input type="text" placeholder="Localizacion" required>
 
-                        <input type="text" class="location_text" placeholder="Localizacion">
+                <input type="date" name="dateEntrada" id="dateEntrada">
 
-                        <input type="date" class="checkin_text" placeholder="Check-in">
+                <input type="date" name="dateSalida" id="dateSalida">
+                <select>
+                    <option value="1" selected>1 persona</option>
+                    <option value="2">2 personas</option>
+                    <option value="3">3 personas</option>
+                    <option value="4">4 personas</option>
+                </select>
+                <select>
+                    <option value="1" selected>1 habitacion</option>
+                    <option value="2">2 habitaciones</option>
+                    <option value="3">3 habitaciones</option>
+                    <option value="4">4 habitaciones</option>
+                </select>
 
-                        <input type="date" class="checkout_text" placeholder="Chek-out">
+                <input type="submit" value="Buscar" style="background-color: yellow;">
 
-                        <input type="number" class="n_pers_text" placeholder="Personas" min="1">
+            </form>
+            <div class="filtros">
+                Filtros
+                <input type="checkbox" placeholder="dfas" width="10">
+            </div>
 
-                        <input type="number" class="n_hab_txt" placeholder="Habitaciones" min="1">
+        </div>
 
-                        <input type="button" onclick="location.href='busqueda.html'" value="BUSCAR"
-                            style="background-color: yellow;">
-                    </form>
 
-                    <div class="filtros">
-                        Filtros
-                        <input type="checkbox" placeholder="dfas" width="10">
+
+
+
+
+
+
+
+        <div class="parte_drch_busqueda">
+            <p>
+                Has encontrado x resultados
+            </p>
+
+            <section class="ejemplo">
+                <a href="hotel_ejemplo.html">
+                    <img src="img/ejemplo1.PNG" width="250" height="250">
+                </a>
+
+                <div class="ejemplo_no_img">
+                    <div class="ejemplo_tit_descrp">
+                        <p>
+                            SPA AND RESORT
+                        </p>
+
+                        <p>
+                            el spa tienes fsdfadsd
+                            dsfasdfasdf dsfdasfasd
+                            fdasfasdf dsfasdf dsfasdfasdffasd
+                            adsfasdfdsafadsfasd
+                            dfs fdsadfasdfsafsad dafs dsaf dfas
+                            sadfdfas dasfasdf
+                        </p>
+                    </div>
+
+                    <div class="ejemplo_nota_precio_disp">
+                        <div>
+                            9,7
+                        </div>
+
+                        <div>
+                            257€
+                        </div>
+
+                        <button class="boton_naranja" onclick="location.href='hotel_ejemplo.html'">Ver<br>
+                            disponibilidad</button>
                     </div>
 
                 </div>
 
-
-
-
-
-
-
-
-
-                <div class="parte_drch_busqueda">
-                    <p>
-                        Has encontrado x resultados
-                    </p>
-
-                    <section class="ejemplo">
-                        <a href="hotel_ejemplo.html">
-                            <img src="img/ejemplo1.PNG" width="250" height="250">
-                        </a>
-
-                        <div class="ejemplo_no_img">
-                            <div class="ejemplo_tit_descrp">
-                                <p>
-                                    SPA AND RESORT
-                                </p>
-
-                                <p>
-                                    el spa tienes fsdfadsd
-                                    dsfasdfasdf dsfdasfasd
-                                    fdasfasdf dsfasdf dsfasdfasdffasd
-                                    adsfasdfdsafadsfasd
-                                    dfs fdsadfasdfsafsad dafs dsaf dfas
-                                    sadfdfas dasfasdf
-                                </p>
-                            </div>
-
-                            <div class="ejemplo_nota_precio_disp">
-                                <div>
-                                    9,7
-                                </div>
-
-                                <div>
-                                    257€
-                                </div>
-
-                                <button class="boton_naranja" onclick="location.href='hotel_ejemplo.html'">Ver<br>
-                                    disponibilidad</button>
-                            </div>
-
-                        </div>
-
-                    </section>
-
-                </div>
-
-
-
-
-
-
-
             </section>
 
+        </div>
+
+
+
+
+
+
+
+    </section>
+    <footer>
+        Todos los derechos reservados -
+        <a href="terminos_y_condiciones.html" style="color: white;">Términos y condiciones</a>
+    </footer>
 </body>
-<footer>
-    Todos los derechos reservados -
-    <a href="terminos_y_condiciones.html" style="color: white;">Términos y condiciones</a>
-</footer>
+
 
 </html>

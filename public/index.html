@@ -76,20 +76,28 @@
     <section class="anchura_pagina">
         <!--para poner el width igual por todo-->
 
-        <form action="" class="form_barra_busqueda">
+        <form action="" class="form_barra_busqueda" id="busqueda">
 
-            <input type="text" placeholder="Localizacion">
+            <input type="text" placeholder="Localizacion" name="Localizacion" id="Localizacion" required>
 
-            <input type="date">
+            <input type="date" name="dateEntrada" id="dateEntrada">
 
-            <input type="date">
+            <input type="date" name="dateSalida" id="dateSalida">
+            <select>
+                <option value="1" selected>1 persona</option>
+                <option value="2">2 personas</option>
+                <option value="3">3 personas</option>
+                <option value="4">4 personas</option>
+            </select>
+            <select>
+                <option value="1" selected>1 habitacion</option>
+                <option value="2">2 habitaciones</option>
+                <option value="3">3 habitaciones</option>
+                <option value="4">4 habitaciones</option>
+            </select>
 
-            <input type="number" placeholder="Personas" min="1">
+            <input type="submit" value="Buscar" style="background-color: yellow;">
 
-            <input type="number" placeholder="Habitaciones" min="1">
-
-            <input type="button" onclick="location.href='busqueda.html'" value="BUSCAR"
-                style="background-color: yellow;">
         </form>
 
         <section>

@@ -247,6 +247,13 @@ footer img {
     font-size: 20px;
     padding: 5px;
 }
+.form_barra_busqueda select {
+    background-color: #ffffff;
+    border: 5px solid yellow;
+    font-size: 20px;
+    padding: 5px;
+}
+
 
 @media (max-width: 1024px) {
     .form_barra_busqueda {

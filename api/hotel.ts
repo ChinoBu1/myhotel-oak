@@ -26,4 +26,10 @@ export default {
       `select * from hotel where Administrador = ${Administrador}`,
     );
   },
+  async getByUbicacion(urlSearch: URLSearchParams) {
+    const CodigoPostal = urlSearch.get("CodigoPostal");
+    return await client.query(
+      `select * from hotel where CodigoPostal = ${CodigoPostal}`,
+    );
+  },
 };
