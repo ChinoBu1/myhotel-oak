@@ -3,12 +3,13 @@ const parasesion = document.getElementsByClassName("sesion");
 const paraHostelero = document.getElementsByClassName("hostelero");
 const nombre = document.getElementById("nombre");
 const logout = document.getElementById("logout");
-
 const form = document.getElementById("busqueda");
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const resp = await fetch("/api/persona.ts");
-  console.log(await resp.json());
+  const formData = new FormData(form);
+  const params = new URLSearchParams(formData);
+  location.replace(`/${params}`)
 });
 
 logout.addEventListener("click", (_e) => {
