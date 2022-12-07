@@ -59,11 +59,12 @@ CREATE TABLE `fecha_reserva` (
 --
 
 CREATE TABLE `habitacion` (
-  `idhabitacion` int(3) NOT NULL,
+  `idhabitacion` int(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `idhotel` int(10) NOT NULL,
   `NumeroHabitacion` int(3) NOT NULL,
   `Capacidad` int(3) NOT NULL,
   `Categoria` enum('individual','doble estandar','triple estandar','suite') NOT NULL
+  `Precio` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -89,7 +90,7 @@ CREATE TABLE `hostelero` (
 --
 
 CREATE TABLE `hotel` (
-  `idHotel` int(10) NOT NULL,
+  `idHotel` int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `NombreHotel` char(25) NOT NULL,
   `TelefonoHotel` int(9) NOT NULL,
   `Direccion` varchar(50) NOT NULL,
@@ -98,7 +99,8 @@ CREATE TABLE `hotel` (
   `WiFi` tinyint(1) NOT NULL,
   `Parking` tinyint(1) NOT NULL,
   `Piscina` tinyint(1) NOT NULL,
-  `CodigoPostal` int(5) NOT NULL
+  `CodigoPostal` int(5) NOT NULL,
+  `Administrador`varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -164,7 +166,6 @@ ALTER TABLE `fecha_reserva`
 -- Indices de la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  ADD PRIMARY KEY (`idhabitacion`),
   ADD KEY `idhotel` (`idhotel`);
 
 --
@@ -177,7 +178,6 @@ ALTER TABLE `hostelero`
 -- Indices de la tabla `hotel`
 --
 ALTER TABLE `hotel`
-  ADD PRIMARY KEY (`idHotel`),
   ADD KEY `CodigoPostal` (`CodigoPostal`);
 
 --
@@ -235,7 +235,8 @@ ALTER TABLE `hostelero`
 -- Filtros para la tabla `hotel`
 --
 ALTER TABLE `hotel`
-  ADD CONSTRAINT `hotel_ibfk_1` FOREIGN KEY (`CodigoPostal`) REFERENCES `ubicacion` (`CodigoPostal`);
+  ADD CONSTRAINT `hotel_ibfk_1` FOREIGN KEY (`Administrador`) REFERENCES `hostelero` (`NIFhostelero`),
+  ADD CONSTRAINT `hotel_ibfk_2` FOREIGN KEY (`CodigoPostal`) REFERENCES `ubicacion` (`CodigoPostal`);
 
 --
 -- Filtros para la tabla `valoracion`
