@@ -9,7 +9,7 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = new FormData(form);
   const params = new URLSearchParams(formData);
-  location.replace(`/${params}`)
+  location.replace(`/?${params}`)
 });
 
 logout.addEventListener("click", (_e) => {

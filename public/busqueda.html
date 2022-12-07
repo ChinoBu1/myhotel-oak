@@ -80,9 +80,70 @@
 
             </form>
             <div class="filtros">
-                Filtros
-                <input type="checkbox" placeholder="dfas" width="10">
+                <p>Filtros:</p>
+                <form action="" class="form_filtros">
+                    <label>Precio</label>
+                    <div class="min_max_precio">
+                        <div>
+                            <label>Min</label>
+                            <input type="number"> 
+                        </div>
+                        
+                        <div>
+                            <label>Max</label>
+                            <input type="number">  
+                        </div>
+                         
+                    </div>
+    
+                    <label>Puntuación</label>
+                    <div class="min_max_precio">
+                        
+                        <div>
+                            <label>Min</label>
+                            <input type="number"> 
+                        </div>
+                        <div>
+                            <label>Max</label>
+                            <input type="number">  
+                        </div>
+     
+                    </div>
+    
+                    <label>Estrellas</label>
+                    <fieldset class="rating">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked=""
+                           aria-label="No rating.">
+               
+                        <input type="radio" id="rate1" name="rating" value="1">
+                        <label for="rate1">1 star</label>
+               
+                        <input type="radio" id="rate2" name="rating" value="2">
+                        <label for="rate2">2 stars</label>
+               
+                        <input type="radio" id="rate3" name="rating" value="3">
+                        <label for="rate3">3 stars</label>
+               
+                        <input type="radio" id="rate4" name="rating" value="4">
+                        <label for="rate4">4 stars</label>
+               
+                        <input type="radio" id="rate5" name="rating" value="5">
+                        <label for="rate5">5 stars</label>
+               
+                        <span class="focus-ring"></span>
+                     </fieldset>
+    
+                        <label><input type="checkbox"> WiFi</label>
+    
+                        <label> <input type="checkbox"> Piscina</label>
+    
+                        <label><input type="checkbox"> Parking</label>
+    
+    
+                </form>
+                
             </div>
+    
 
         </div>
 
