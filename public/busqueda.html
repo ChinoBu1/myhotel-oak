@@ -22,10 +22,10 @@
 </head>
 
 <body>
-    <script src="/script/index.js" type="module"></script>
+    <script src="/script/busqueda.js" type="module"></script>
     <header>
         <nav class="navegador">
-            <a href="/">
+            <a href="/" style="width: fit-content;">
                 <img src="img/logo.png" width="250" height="100">
             </a>
 
@@ -39,7 +39,7 @@
                 </a>
 
                 <button class="boton_naranja hostelero" style="display: none;"
-                    onclick="location.href='registro_alojamiento.html'">Registra tu
+                    onclick="location.href='/registro_alojamiento'">Registra tu
                     alojamiento</button>
                 <button class="boton_naranja nosesion" onclick="location.href='/inicioSesion'">Inicio Sesion</button>
                 <button class="boton_naranja nosesion" onclick="location.href='/registro'">Registrate</button>
@@ -49,27 +49,26 @@
 
 
             </div>
-
-
         </nav>
     </header>
+
     <section class="anchura_pagina dos_columnas_busqueda">
 
         <div class="parte_izq_busqueda">
             <form action="" class="form_barra_busqueda" id="form_busqueda">
 
-                <input type="text" placeholder="Localizacion" required>
+                <input type="text" placeholder="Localizacion" name="Localizacion" id="Localizacion" required>
 
                 <input type="date" name="dateEntrada" id="dateEntrada">
 
                 <input type="date" name="dateSalida" id="dateSalida">
-                <select>
+                <select name="personas" id="personas">
                     <option value="1" selected>1 persona</option>
                     <option value="2">2 personas</option>
                     <option value="3">3 personas</option>
                     <option value="4">4 personas</option>
                 </select>
-                <select>
+                <select name="habitacion" id="habitacion">
                     <option value="1" selected>1 habitacion</option>
                     <option value="2">2 habitaciones</option>
                     <option value="3">3 habitaciones</option>
@@ -77,7 +76,6 @@
                 </select>
 
                 <input type="submit" value="Buscar" style="background-color: yellow;">
-
             </form>
             <div class="filtros">
                 <p>Filtros:</p>
@@ -86,64 +84,64 @@
                     <div class="min_max_precio">
                         <div>
                             <label>Min</label>
-                            <input type="number"> 
+                            <input type="number">
                         </div>
-                        
+
                         <div>
                             <label>Max</label>
-                            <input type="number">  
+                            <input type="number">
                         </div>
-                         
+
                     </div>
-    
+
                     <label>Puntuación</label>
                     <div class="min_max_precio">
-                        
+
                         <div>
                             <label>Min</label>
-                            <input type="number"> 
+                            <input type="number">
                         </div>
                         <div>
                             <label>Max</label>
-                            <input type="number">  
+                            <input type="number">
                         </div>
-     
+
                     </div>
-    
+
                     <label>Estrellas</label>
                     <fieldset class="rating">
-                        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked=""
-                           aria-label="No rating.">
-               
+                        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked
+                            aria-label="No rating.">
+
                         <input type="radio" id="rate1" name="rating" value="1">
                         <label for="rate1">1 star</label>
-               
+
                         <input type="radio" id="rate2" name="rating" value="2">
                         <label for="rate2">2 stars</label>
-               
+
                         <input type="radio" id="rate3" name="rating" value="3">
                         <label for="rate3">3 stars</label>
-               
+
                         <input type="radio" id="rate4" name="rating" value="4">
                         <label for="rate4">4 stars</label>
-               
+
                         <input type="radio" id="rate5" name="rating" value="5">
                         <label for="rate5">5 stars</label>
-               
+
                         <span class="focus-ring"></span>
-                     </fieldset>
-    
-                        <label><input type="checkbox"> WiFi</label>
-    
-                        <label> <input type="checkbox"> Piscina</label>
-    
-                        <label><input type="checkbox"> Parking</label>
-    
-    
+                    </fieldset>
+
+                    <label><input type="checkbox"> WiFi</label>
+
+                    <label> <input type="checkbox"> Piscina</label>
+
+                    <label><input type="checkbox"> Parking</label>
+
+
                 </form>
-                
+
             </div>
-    
+
 
         </div>
 
@@ -155,12 +153,12 @@
 
 
 
-        <div class="parte_drch_busqueda">
-            <p>
-                Has encontrado x resultados
+        <div class="parte_drch_busqueda" id="resultados">
+            <p id="parrafo">
+
             </p>
 
-            <section class="ejemplo">
+            <!-- <section class="ejemplo">
                 <a href="hotel_ejemplo.html">
                     <img src="img/ejemplo1.PNG" width="250" height="250">
                 </a>
@@ -196,15 +194,9 @@
 
                 </div>
 
-            </section>
+            </section> -->
 
         </div>
-
-
-
-
-
-
 
     </section>
     <footer>

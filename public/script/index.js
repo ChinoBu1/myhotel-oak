@@ -5,11 +5,11 @@ const nombre = document.getElementById("nombre");
 const logout = document.getElementById("logout");
 const form = document.getElementById("busqueda");
 
-form.addEventListener("submit", async (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(form);
   const params = new URLSearchParams(formData);
-  location.replace(`/?${params}`)
+  location.replace(`/?${params}`);
 });
 
 logout.addEventListener("click", (_e) => {
@@ -42,3 +42,13 @@ if (sessionStorage.getItem("login")) {
   ancor.innerHTML = Sesion.Nombre + " " + Sesion.Apellidos;
   nombre.appendChild(ancor);
 }
+const hoy = new Date().toISOString().split("T")[0];
+
+form.children.dateEntrada.min = hoy;
+
+form.children.dateSalida.min = form.children.dateEntrada.min;
+
+form.children.dateEntrada.addEventListener("input", (e) => {
+  form.children.dateSalida.value = "";
+  form.children.dateSalida.min = e.target.value;
+});

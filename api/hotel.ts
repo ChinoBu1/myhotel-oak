@@ -27,9 +27,17 @@ export default {
     );
   },
   async getByUbicacion(urlSearch: URLSearchParams) {
-    const CodigoPostal = urlSearch.get("CodigoPostal");
-    return await client.query(
-      `select * from hotel where CodigoPostal = ${CodigoPostal}`,
-    );
+    const Localizacion = urlSearch.get("Localizacion");
+    try {
+      const resp = await client.query(
+        `select CodigoPostal from ubicacion where NombreCiudad = '${Localizacion}'`,
+      );
+
+      return await client.query(
+        `select * from hotel where CodigoPostal = ${resp[0].CodigoPostal}`,
+      );
+    } catch (e) {
+      return [];
+    }
   },
 };

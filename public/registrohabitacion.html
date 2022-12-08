@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myHotel</title>
+
+    <!--fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@200&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="css/normalize.css" as="style"> <!-- para cargar mas rapido -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="preload" href="css/styles.css" as="style"> <!-- para cargar mas rapido -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="website icon" type="png" href="img/logo_browser.png">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navegador_inicio_sesion">
+            <a href="/">
+                <img src="img/logo.png" width="250" height="100" style="justify-content: center;">
+            </a>
+        </nav>
+    </header>
+
+    <script src="/script/registroHabitacion.js" type="module"></script>
+    <section class="anchura_pagina_inicio_sesion">
+
+        <form action="" method="post" id="registroHabitacion">
+            <label for="Capacidad">Capacidad</label>
+            <select name="Capacidad" id="Capacidad">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <label for="Categoria"></label>
+            <select name="Categoria" id="Categoria">
+                <option value="1">Individual</option>
+                <option value="2">doble estandar</option>
+                <option value="3">triple estandar</option>
+                <option value="4">suite</option>
+            </select>
+            <label for="Precio">Precio</label>
+            <input type="number" name="Precio" id="Precio">
+            <input type="submit" value="Registrar Habitacion">
+        </form>
+    </section>
+
+
+</body>
+<footer>
+    Todos los derechos reservados -
+    <a href="terminos_y_condiciones.html" style="color: white;">Términos y condiciones</a>
+</footer>
+
+</html>

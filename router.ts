@@ -38,6 +38,13 @@ router
     ctx.response.body = page;
     ctx.response.headers.set("Content-Type", "text/html");
   })
+  .get("/registrohabitacion", async (ctx) => {
+    const page = await Deno.readFile(
+      `${Deno.cwd()}/public/registrohabitacion.html`,
+    );
+    ctx.response.body = page;
+    ctx.response.headers.set("Content-Type", "text/html");
+  })
   .get("/img/:img", async (ctx) => {
     const imageBuf = await Deno.readFile(
       `${Deno.cwd()}/public/img/${ctx.params.img}`,
@@ -76,6 +83,12 @@ router
       ctx.response.body = await hotel.getByAdministrador(
         ctx.request.url.searchParams,
       );
+    } else if (ctx.request.url.searchParams.has("Localizacion")) {
+      ctx.response.body = await hotel.getByUbicacion(
+        ctx.request.url.searchParams,
+      );
+    } else {
+      ctx.response.body = await hotel.getAll();
     }
   })
   .get("/api/hotel/habitacion.ts", async (ctx) => {
@@ -90,5 +103,10 @@ router
   })
   .post("/api/hotel.ts", async (ctx) => {
     ctx.response.body = await hotel.postHotel(ctx.request.body().value);
+  })
+  .post("/api/habitacion.ts", async (ctx) => {
+    ctx.response.body = await habitacion.postHabitacion(
+      ctx.request.body().value,
+    );
   });
 export default router;

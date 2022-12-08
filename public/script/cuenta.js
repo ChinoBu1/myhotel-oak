@@ -23,15 +23,26 @@ if (Sesion.Rol == "hotelero") {
   const data = await resp.json();
   for (const hotel of data) {
     sec.appendChild(separador);
+    const div = document.createElement("div");
+    div.id = hotel.idHotel;
     for (const prop in hotel) {
       if (prop != "idHotel") {
         const label = document.createElement("label");
         label.innerHTML = prop;
-        sec.appendChild(label);
-        const div = document.createElement("div");
-        div.innerHTML = hotel[prop];
-        sec.appendChild(div);
+        div.appendChild(label);
+        const div2 = document.createElement("div");
+        div2.innerHTML = hotel[prop];
+        div.appendChild(div2);
       }
     }
+    const boton = document.createElement("button");
+    boton.innerHTML = "Registrar habitacion";
+    div.appendChild(boton);
+    boton.addEventListener("click", (e) => {
+      location.replace(
+        `/registrohabitacion?idhotel=${e.target.parentElement.id}`
+      );
+    });
+    sec.appendChild(div);
   }
 }
