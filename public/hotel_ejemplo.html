@@ -21,50 +21,41 @@
 </head>
 
 <body>
+    <script src="/script/habitacion.js" type="module"></script>
     <header>
         <nav class="navegador">
-            <a href="index.html">
+            <a href="/" style="width: fit-content;">
                 <img src="img/logo.png" width="250" height="100">
             </a>
 
             <div class="navegador_no_logo">
-                <a href="#">
+                <!-- <a href="#">
                     <img src="img/band_inglesa.png" width="66,66" height="40">
-                </a>
+                </a> -->
 
                 <a href="preguntas_frecuentes.html">
                     <img src="img/help.png" width="40" height="40">
                 </a>
 
-                <button class="boton_naranja" onclick="location.href='registro_alojamiento.html'">Registra tu
+                <button class="boton_naranja hostelero" style="display: none;"
+                    onclick="location.href='/registro_alojamiento'">Registra tu
                     alojamiento</button>
-                <button class="boton_naranja" onclick="location.href='inicio_sesion.html'">Inicio sesion</button>
+                <button class="boton_naranja nosesion" onclick="location.href='/inicioSesion'">Inicio Sesion</button>
+                <button class="boton_naranja nosesion" onclick="location.href='/registro'">Registrate</button>
+                <div class="sesion" id="nombre"></div>
+                <button class="boton_naranja sesion" style="display: none;" id="logout">Log out</button>
+
+
 
             </div>
         </nav>
     </header>
 
-    <section class="anchura_pagina">
+    <section class="anchura_pagina" id="reserva">
         <!--para poner el width igual por todo-->
 
-        <form action="" class="form_barra_busqueda">
 
-            <input type="text" class="location_text" placeholder="Localizacion">
-
-            <input type="date" class="checkin_text" placeholder="Check-in">
-
-            <input type="date" class="checkout_text" placeholder="Chek-out">
-
-            <input type="number" class="n_pers_text" placeholder="Personas" min="1">
-
-            <input type="number" class="n_hab_txt" placeholder="Habitaciones" min="1">
-
-            <input type="button" onclick="location.href='busqueda.html'" value="BUSCAR"
-                style="background-color: yellow;">
-        </form>
-
-
-        <div class="titulo_loc">
+        <!-- <div class="titulo_loc">
             <p style="font-size: 20px;">
                 SPA RESORT BUENAS TARDES
             </p>
@@ -79,7 +70,7 @@
 
         <div>
             FOTOS DONDE CLICAS Y TE SALEN O SOLO UN PAR DE FOTOS
-        </div>
+        </div>-->
 
 
         <table style="width: 100%;">
@@ -100,8 +91,8 @@
                 </tr>
             </thead>
 
-            <tbody>
-                <tr>
+            <tbody id="tabla">
+                <!-- <tr>
                     <th style="text-align: left; padding-left: 10px;">
                         <p>HABITACION DOBLE</p>
                         <P>Descripcion de la habitacion</P>
@@ -123,20 +114,13 @@
                             </select>
                         </form>
                     </th>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
 
 
         <button class="boton_naranja" onclick="location.href='pago_reserva.html'"
             style="margin-top: 20px;">Reserva</button>
-
-
-
-
-
-
-
 
     </section>
 

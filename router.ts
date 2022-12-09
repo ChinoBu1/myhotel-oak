@@ -45,6 +45,13 @@ router
     ctx.response.body = page;
     ctx.response.headers.set("Content-Type", "text/html");
   })
+  .get("/habitacionHotel", async (ctx) => {
+    const page = await Deno.readFile(
+      `${Deno.cwd()}/public/hotel_ejemplo.html`,
+    );
+    ctx.response.body = page;
+    ctx.response.headers.set("Content-Type", "text/html");
+  })
   .get("/img/:img", async (ctx) => {
     const imageBuf = await Deno.readFile(
       `${Deno.cwd()}/public/img/${ctx.params.img}`,

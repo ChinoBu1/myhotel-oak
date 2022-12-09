@@ -85,6 +85,7 @@ hoteles.forEach(async (element) => {
     `Habitaciones disponibles ${habitaciones.length}` +
     "</div>" +
     "<div>" +
+    `<button class="boton_naranja" onclick="location.href='/habitacionHotel?idHotel=${element.idHotel}'">Ver<br>disponibilidad</button>`
     "</div>";
 
   div.appendChild(div2);
