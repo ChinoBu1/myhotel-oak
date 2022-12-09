@@ -373,6 +373,7 @@ footer img {
     padding: 10px;
     column-gap: 10px;
     margin-right: 4rem;
+
 }
 
 @media (max-width: 1024px) {
@@ -403,9 +404,13 @@ footer img {
 
 .ejemplo_no_img {
     display: flex;
-    flex-direction: flex;
+    justify-content: space-between;
 }
 
+.ejemplo_no_img {
+   width: 100%;
+    
+}
 .ejemplo_nota_precio_disp div {
     margin-bottom: 70px;
     text-align: right;

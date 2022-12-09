@@ -57,7 +57,11 @@ const parrafo = document.getElementById("parrafo");
 const resultados = document.getElementById("resultados");
 parrafo.innerHTML = `Has encontrado ${hoteles.length} hoteles`;
 
-hoteles.forEach((element) => {
+hoteles.forEach(async (element) => {
+  const resps2 = await fetch(
+    `/api/hotel/habitacion.ts?idHotel=${element.idHotel}`
+  );
+  const habitaciones = await resps2.json();
   const section = document.createElement("section");
   section.className = "ejemplo";
 
@@ -65,10 +69,26 @@ hoteles.forEach((element) => {
   div.className = "ejemplo_no_img";
 
   const div2 = document.createElement("div");
-  div.className = "ejemplo_tit_descrp";
-  div.innerHTML = "<p>" + `${element.NombreHotel}` + "</p>" + "<p>" + "</p>";
+  div2.className = "ejemplo_tit_descrp";
+  div2.innerHTML =
+    "<p>" +
+    `${element.NombreHotel}` +
+    "</p>" +
+    "<p>" +
+    `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus, tempore.` +
+    "</p>";
+
+  const div3 = document.createElement("div");
+  div3.className = "ejemplo_nota_precio_disp";
+  div3.innerHTML =
+    "<div>" +
+    `Habitaciones disponibles ${habitaciones.length}` +
+    "</div>" +
+    "<div>" +
+    "</div>";
 
   div.appendChild(div2);
+  div.appendChild(div3);
   section.appendChild(div);
   resultados.appendChild(section);
 });
