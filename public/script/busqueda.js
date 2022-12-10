@@ -79,14 +79,19 @@ hoteles.forEach(async (element) => {
     "</p>";
 
   const div3 = document.createElement("div");
+  let numHab = 0;
+  habitaciones.forEach((element) => {
+    numHab = numHab + element.NumeroHabitacion;
+  });
+
   div3.className = "ejemplo_nota_precio_disp";
   div3.innerHTML =
     "<div>" +
-    `Habitaciones disponibles ${habitaciones.length}` +
+    `Habitaciones disponibles ${numHab}` +
     "</div>" +
     "<div>" +
-    `<button class="boton_naranja" onclick="location.href='/habitacionHotel?idHotel=${element.idHotel}'">Ver<br>disponibilidad</button>`
-    "</div>";
+    `<button class="boton_naranja" onclick="location.href='/habitacionHotel?idHotel=${element.idHotel}'">Ver<br>disponibilidad</button>`;
+  ("</div>");
 
   div.appendChild(div2);
   div.appendChild(div3);

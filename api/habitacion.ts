@@ -13,9 +13,8 @@ export default {
   },
   async postHabitacion(formData: FormDataReader) {
     const data = await formData.read();
-    const numHab = Math.random() * 500;
     return await client.query(
-      `insert into habitacion (idhotel,NumeroHabitacion, Capacidad, Categoria, Precio) values (${data.fields.idHotel}, ${numHab},${data.fields.Capacidad},${data.fields.Categoria}, ${data.fields.Precio})`,
+      `insert into habitacion (idhotel,NumeroHabitacion, Capacidad, Categoria, Precio) values (${data.fields.idHotel}, ${data.fields.NumeroHabitacion},${data.fields.Capacidad},${data.fields.Categoria}, ${data.fields.Precio})`,
     );
   },
 };
