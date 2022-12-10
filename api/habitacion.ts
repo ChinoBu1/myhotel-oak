@@ -14,7 +14,7 @@ export default {
   async postHabitacion(formData: FormDataReader) {
     const data = await formData.read();
     return await client.query(
-      `insert into habitacion (idhotel,NumeroHabitacion, Capacidad, Categoria, Precio) values (${data.fields.idHotel}, ${data.fields.NumeroHabitacion},${data.fields.Capacidad},${data.fields.Categoria}, ${data.fields.Precio})`,
+      `insert into habitacion (idhotel,NumeroHabitacion, Capacidad, Categoria, Regimen,Precio) values (${data.fields.idHotel}, ${data.fields.NumeroHabitacion},${data.fields.Capacidad},${data.fields.Categoria}, ${data.fields.Regimen},${data.fields.Precio})`,
     );
   },
 };

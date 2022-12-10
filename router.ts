@@ -2,6 +2,7 @@ import { Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 import hotel from "./api/hotel.ts";
 import persona from "./api/persona.ts";
 import habitacion from "./api/habitacion.ts";
+import ubicacion from "./api/ubicacion.ts";
 
 const router = new Router();
 router
@@ -48,6 +49,13 @@ router
   .get("/habitacionHotel", async (ctx) => {
     const page = await Deno.readFile(
       `${Deno.cwd()}/public/hotel_ejemplo.html`,
+    );
+    ctx.response.body = page;
+    ctx.response.headers.set("Content-Type", "text/html");
+  })
+  .get("/reserva", async (ctx) => {
+    const page = await Deno.readFile(
+      `${Deno.cwd()}/public/pago_reserva.html`,
     );
     ctx.response.body = page;
     ctx.response.headers.set("Content-Type", "text/html");
@@ -104,6 +112,9 @@ router
         ctx.request.url.searchParams,
       );
     }
+  })
+  .get("/api/ubicacion.ts", async (ctx) => {
+    ctx.response.body = await ubicacion.getAll();
   })
   .post("/api/persona.ts", async (ctx) => {
     ctx.response.body = await persona.registerUser(ctx.request.body().value);

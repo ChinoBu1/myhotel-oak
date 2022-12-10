@@ -16,14 +16,14 @@ export default {
       );
     }
     return await client.query(
-      `insert into hotel (NombreHotel, TelefonoHotel, Direccion, Estrellas, Regimen, WiFi, Parking, Piscina, CodigoPostal, Administrador) 
-       values ('${data.fields.Nombre}', ${data.fields.Telefono}, '${data.fields.Direccion}', ${data.fields.Estrellas}, '${data.fields.Regimen}', ${data.fields.Wifi}, ${data.fields.Parking}, ${data.fields.Piscina}, ${data.fields.CodigoPostal}, ${data.fields.Administrador})`,
+      `insert into hotel (NombreHotel, TelefonoHotel, Direccion, Estrellas, WiFi, Parking, Piscina, CodigoPostal, NIFhostelero) 
+       values ('${data.fields.Nombre}', ${data.fields.Telefono}, '${data.fields.Direccion}', ${data.fields.Estrellas}, ${data.fields.Wifi}, ${data.fields.Parking}, ${data.fields.Piscina}, ${data.fields.CodigoPostal}, ${data.fields.NIFhostelero})`,
     );
   },
   async getByAdministrador(urlSearch: URLSearchParams) {
-    const Administrador = urlSearch.get("Administrador");
+    const NIFhostelero = urlSearch.get("NIFhostelero");
     return await client.query(
-      `select * from hotel where Administrador = ${Administrador}`,
+      `select * from hotel where NIFhostelero = ${NIFhostelero}`,
     );
   },
   async getByUbicacion(urlSearch: URLSearchParams) {
@@ -37,6 +37,7 @@ export default {
         `select * from hotel where CodigoPostal = ${resp[0].CodigoPostal}`,
       );
     } catch (e) {
+      console.log(e);
       return [];
     }
   },

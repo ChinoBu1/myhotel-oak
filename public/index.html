@@ -78,11 +78,13 @@
 
         <form action="" class="form_barra_busqueda" id="busqueda">
 
-            <input type="text" placeholder="Localizacion" name="Localizacion" id="Localizacion" required>
+            <select name="Localizacion" id="Localizacion">
+                <option value="" selected>Selecion lugar de destino</option>
+            </select>
 
-            <input type="date" name="dateEntrada" id="dateEntrada">
+            <input type="date" name="dateEntrada" id="dateEntrada" required>
 
-            <input type="date" name="dateSalida" id="dateSalida">
+            <input type="date" name="dateSalida" id="dateSalida" required>
             <select name="personas" id="personas">
                 <option value="1" selected>1 persona</option>
                 <option value="2">2 personas</option>

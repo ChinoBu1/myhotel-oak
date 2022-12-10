@@ -7,7 +7,7 @@ export default {
   async getByHotel(urlSearch: URLSearchParams) {
     const idHotel = urlSearch.get("idHotel");
     return await client.query(
-      `select * from valoracion where idhotel = idHotel`,
+      `select * from valoracion where idhotel = ${idHotel}`,
     );
   },
 };

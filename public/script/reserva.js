@@ -34,33 +34,3 @@ if (sessionStorage.getItem("login")) {
   ancor.innerHTML = Sesion.Nombre + " " + Sesion.Apellidos;
   nombre.appendChild(ancor);
 }
-
-const form = document.getElementById("busqueda");
-
-const Localizacion = document.getElementById("Localizacion");
-
-const reps = await fetch("/api/ubicacion.ts");
-const ubicaciones = await reps.json();
-
-for (const ubicacion of ubicaciones) {
-  const option = document.createElement("option");
-  option.innerHTML = ubicacion.NombreCiudad;
-  Localizacion.appendChild(option);
-}
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const formData = new FormData(form);
-  const params = new URLSearchParams(formData);
-  location.replace(`/?${params}`);
-});
-const hoy = new Date().toISOString().split("T")[0];
-
-form.children.dateEntrada.min = hoy;
-
-form.children.dateSalida.min = form.children.dateEntrada.min;
-
-form.children.dateEntrada.addEventListener("input", (e) => {
-  form.children.dateSalida.value = "";
-  form.children.dateSalida.min = e.target.value;
-});

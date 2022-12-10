@@ -19,7 +19,7 @@ separador.style.width = "100%";
 separador.style.height = "2px";
 
 if (Sesion.Rol == "hotelero") {
-  const resp = await fetch(`/api/hotel.ts?Administrador=${Sesion.DNI}`);
+  const resp = await fetch(`/api/hotel.ts?NIFhostelero=${Sesion.DNI}`);
   const data = await resp.json();
   for (const hotel of data) {
     sec.appendChild(separador);

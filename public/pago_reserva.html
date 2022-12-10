@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <script src="/script/index.js" type="module"></script>
+    <script src="/script/reserva.js" type="module"></script>
     <header>
         <nav class="navegador">
             <a href="/">
@@ -29,9 +29,9 @@
             </a>
 
             <div class="navegador_no_logo">
-                <a href="#">
+                <!-- <a href="#">
                     <img src="img/band_inglesa.png" width="66,66" height="40">
-                </a>
+                </a> -->
 
                 <a href="preguntas_frecuentes.html">
                     <img src="img/help.png" width="40" height="40">
@@ -50,7 +50,7 @@
             </div>
 
 
-            <section class="anchura_pagina dos_columnas_pago_reserva">
+            <section class="anchura_pagina" style="display: flex; justify-content: space-around;">
 
                 <div class="parte_izq_pago_reserva">
                     <p style="text-align: center;">
@@ -60,22 +60,31 @@
                     <div class="cont_entrada_salida">
                         <p>
                             Entrada<br>
-                            Hora: 10:00 <br>
-                            Fecha: 24/12/2022
+                        <div id="dateEntrada">
+
+                        </div>
+
                         </p>
                         <p>
                             Salida<br>
-                            Hora: 10:00 <br>
-                            Fecha: 24/12/2022
+                        <div id="dateSalida">
+
+                        </div>
                         </p>
                     </div>
 
                     <p>
-                        Duración de la estancia:<br>x noches
+                        Duración de la estancia:<br>
+                    <div id="duracion estancia">
+
+                    </div>
                     </p>
 
                     <p>
                         Desglose de precio:<br>
+                    <div id="desglose">
+
+                    </div>
                     </p>
 
                 </div>
@@ -86,7 +95,7 @@
                         Tus datos
                     </p>
 
-                    <div class="parte_drch_img_info">
+                    <!-- <div class="parte_drch_img_info">
                         <img src="img/ejemplo1.PNG" width="250" height="250">
                         <div class="parte_drch_info">
                             <p class="titulo_hotel_pago_reserva">
@@ -103,10 +112,10 @@
                             </p>
 
                         </div>
-                    </div>
+                    </div> -->
 
 
-                    <form action="" class="form_pago_reserva">
+                    <!-- <form action="" class="form_pago_reserva">
                         <label>Nombre</label>
                         <input type="text" placeholder="Nombre">
 
@@ -149,7 +158,9 @@
 
                         <input type="button" value="Enviar" onclick="location.href='index.html'" style="width: 140px">
 
-                    </form>
+                    </form> -->
+
+
 
 
                 </div>

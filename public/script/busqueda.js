@@ -4,7 +4,17 @@ const paraHostelero = document.getElementsByClassName("hostelero");
 const nombre = document.getElementById("nombre");
 const logout = document.getElementById("logout");
 
-console.log(" ");
+const Localizacion = document.getElementById("Localizacion");
+
+const reps = await fetch("/api/ubicacion.ts");
+const ubicaciones = await reps.json();
+
+for (const ubicacion of ubicaciones) {
+  const option = document.createElement("option");
+  option.innerHTML = ubicacion.NombreCiudad;
+  Localizacion.appendChild(option);
+}
+
 logout.addEventListener("click", (_e) => {
   localStorage.removeItem("login");
   sessionStorage.removeItem("login");
@@ -90,7 +100,7 @@ hoteles.forEach(async (element) => {
     `Habitaciones disponibles ${numHab}` +
     "</div>" +
     "<div>" +
-    `<button class="boton_naranja" onclick="location.href='/habitacionHotel?idHotel=${element.idHotel}'">Ver<br>disponibilidad</button>`;
+    `<button class="boton_naranja" onclick="location.href='/habitacionHotel?idHotel=${element.idHotel}&dateEntrada=${params.dateEntrada}&dateSalida=${params.dateSalida}'">Ver<br>disponibilidad</button>`;
   ("</div>");
 
   div.appendChild(div2);
