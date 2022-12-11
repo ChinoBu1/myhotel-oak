@@ -13,9 +13,9 @@ logout.addEventListener("click", (_e) => {
 if (localStorage.getItem("login") && !sessionStorage.getItem("login")) {
   sessionStorage.setItem("login", localStorage.getItem("login"));
 }
-
+let Sesion;
 if (sessionStorage.getItem("login")) {
-  const Sesion = JSON.parse(sessionStorage.getItem("login"))[0];
+  Sesion = JSON.parse(sessionStorage.getItem("login"))[0];
   Array.from(paranosesion).forEach((element) => {
     element.style.display = "none";
   });
@@ -67,7 +67,6 @@ idHotel.innerHTML = hotel.NombreHotel;
 Localizacion.innerHTML = "Direccion: " + hotel.Direccion;
 
 const datosCliente = document.getElementById("datosCliente");
-const Sesion = JSON.parse(sessionStorage.getItem("login"))[0];
 
 for (const key in Sesion) {
   if (Object.hasOwnProperty.call(Sesion, key)) {
@@ -86,19 +85,23 @@ for (const key in Sesion) {
 const botonReserva = document.getElementById("botonReserva");
 
 botonReserva.addEventListener("click", async () => {
-  if (confirm("inicado proceso de pago") == true) {
-    const formData = new FormData();
-    formData.append("idHotel", params.idHotel);
-    formData.append("FechaEntrada", params.dateEntrada);
-    formData.append("FechaSalida", params.dateSalida);
-    formData.append("DNICliente", Sesion.DNI);
-    formData.append("idhabitacion", params.hab);
-    formData.append("NumeroHabitacion", params.num);
-    const reps = await fetch("/api/hotel/habitacion/reserva.ts", {
-      method: "POST",
-      body: formData,
-    });
+  if (Sesion) {
+    if (confirm("inicado proceso de pago") == true) {
+      const formData = new FormData();
+      formData.append("idHotel", params.idHotel);
+      formData.append("FechaEntrada", params.dateEntrada);
+      formData.append("FechaSalida", params.dateSalida);
+      formData.append("DNICliente", Sesion.DNI);
+      formData.append("idhabitacion", params.hab);
+      formData.append("NumeroHabitacion", params.num);
+      const reps = await fetch("/api/hotel/habitacion/reserva.ts", {
+        method: "POST",
+        body: formData,
+      });
 
-    console.log(await reps.json());
+      console.log(await reps.json());
+    }
+  } else {
+    alert("Por favor inice sesion o registrese");
   }
 });
