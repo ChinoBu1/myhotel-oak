@@ -19,7 +19,8 @@ export default {
       `SELECT * FROM persona WHERE Pasword = '${Pass}' AND Email = '${Email}'`,
     );
   },
-  async registerUser(form: FormDataReader) {
+  // deno-lint-ignore no-explicit-any
+  async registerUser(form: FormDataReader | any) {
     const data = await form.read();
     return await client.query(
       `INSERT INTO persona VALUES ('${data.fields.DNI}', '${data.fields.Nombre}', '${data.fields.Apellidos}', '${data.fields.Email}','${data.fields.Pasword}', '${data.fields.Telefono}', 2)`,

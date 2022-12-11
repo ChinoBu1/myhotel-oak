@@ -11,7 +11,8 @@ export default {
       `select * from habitacion where idhotel = ${idHotel}`,
     );
   },
-  async postHabitacion(formData: FormDataReader) {
+  // deno-lint-ignore no-explicit-any
+  async postHabitacion(formData: FormDataReader | any) {
     const data = await formData.read();
     return await client.query(
       `insert into habitacion (idhotel,NumeroHabitacion, Capacidad, Categoria, Regimen,Precio) values (${data.fields.idHotel}, ${data.fields.NumeroHabitacion},${data.fields.Capacidad},${data.fields.Categoria}, ${data.fields.Regimen},${data.fields.Precio})`,

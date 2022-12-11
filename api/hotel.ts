@@ -5,7 +5,12 @@ export default {
   async getAll() {
     return await client.query(`select * from hotel`);
   },
-  async postHotel(form: FormDataReader) {
+  async getById(urlSearch: URLSearchParams) {
+    const idHotel = urlSearch.get("idHotel");
+    return await client.query(`select * from hotel where idHotel = ${idHotel}`);
+  },
+  // deno-lint-ignore no-explicit-any
+  async postHotel(form: FormDataReader | any) {
     const data = await form.read();
     const ciudad = await client.query(
       `select * from ubicacion where CodigoPostal = ${data.fields.CodigoPostal}`,

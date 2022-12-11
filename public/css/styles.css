@@ -705,7 +705,7 @@ thead th {
 
 .cont_entrada_salida {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 }
 
@@ -725,8 +725,10 @@ thead th {
 
 .parte_drch_img_info {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
 }
+
 
 .titulo_hotel_pago_reserva {
     margin: 0 0;

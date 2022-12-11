@@ -34,3 +34,71 @@ if (sessionStorage.getItem("login")) {
   ancor.innerHTML = Sesion.Nombre + " " + Sesion.Apellidos;
   nombre.appendChild(ancor);
 }
+
+const dateEntrada = document.getElementById("dateEntrada");
+const dateSalida = document.getElementById("dateSalida");
+const duracion = document.getElementById("duracion");
+
+const URLsearch = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(URLsearch);
+
+const Entrada = new Date(params.dateEntrada);
+const Salida = new Date(params.dateSalida);
+
+dateEntrada.innerHTML =
+  Entrada.getDate() + "/" + Entrada.getMonth() + "/" + Entrada.getFullYear();
+
+dateSalida.innerHTML =
+  Salida.getDate() + "/" + Salida.getMonth() + "/" + Salida.getFullYear();
+
+const diasDuracion =
+  (Salida.getTime() - Entrada.getTime()) / (1000 * 3600 * 24) + " dias";
+
+duracion.innerHTML = diasDuracion;
+
+const resp = await fetch(`/api/hotel.ts?idHotel=${params.idHotel}`);
+const hoteles = await resp.json();
+const hotel = hoteles[0];
+
+const idHotel = document.getElementById("idHotel");
+const Localizacion = document.getElementById("Localizacion");
+
+idHotel.innerHTML = hotel.NombreHotel;
+Localizacion.innerHTML = "Direccion: " + hotel.Direccion;
+
+const datosCliente = document.getElementById("datosCliente");
+const Sesion = JSON.parse(sessionStorage.getItem("login"))[0];
+
+for (const key in Sesion) {
+  if (Object.hasOwnProperty.call(Sesion, key)) {
+    if (key != "Pasword" && key != "Rol") {
+      const element = Sesion[key];
+      const label = document.createElement("label");
+      label.innerHTML = key;
+      datosCliente.appendChild(label);
+      const div = document.createElement("div");
+      div.innerHTML = element;
+      datosCliente.appendChild(div);
+    }
+  }
+}
+
+const botonReserva = document.getElementById("botonReserva");
+
+botonReserva.addEventListener("click", async () => {
+  if (confirm("inicado proceso de pago") == true) {
+    const formData = new FormData();
+    formData.append("idHotel", params.idHotel);
+    formData.append("FechaEntrada", params.dateEntrada);
+    formData.append("FechaSalida", params.dateSalida);
+    formData.append("DNICliente", Sesion.DNI);
+    formData.append("idhabitacion", params.hab);
+    formData.append("NumeroHabitacion", params.num);
+    const reps = await fetch("/api/hotel/habitacion/reserva.ts", {
+      method: "POST",
+      body: formData,
+    });
+
+    console.log(await reps.json());
+  }
+});

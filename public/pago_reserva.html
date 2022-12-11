@@ -48,25 +48,28 @@
 
 
             </div>
+        </nav>
+        <section class="anchura_pagina" style="display: flex; justify-content: space-around; ">
 
+            <div class="parte_izq_pago_reserva">
+                <p style="text-align: center;">
+                    Tu seleción
+                </p>
 
-            <section class="anchura_pagina" style="display: flex; justify-content: space-around;">
-
-                <div class="parte_izq_pago_reserva">
-                    <p style="text-align: center;">
-                        Tu seleción
-                    </p>
-
-                    <div class="cont_entrada_salida">
+                <div class="cont_entrada_salida">
+                    <div class="entrada" style="display: flex; flex-direction: column;">
                         <p>
-                            Entrada<br>
+                            Entrada
+                        </p>
                         <div id="dateEntrada">
 
                         </div>
+                    </div>
 
-                        </p>
+
+                    <div class="salida" style="display: flex; flex-direction: column;">
                         <p>
-                            Salida<br>
+                            Salida
                         <div id="dateSalida">
 
                         </div>
@@ -75,7 +78,7 @@
 
                     <p>
                         Duración de la estancia:<br>
-                    <div id="duracion estancia">
+                    <div id="duracion">
 
                     </div>
                     </p>
@@ -89,33 +92,39 @@
 
                 </div>
 
+            </div>
 
-                <div class="parte_drch_pago_reserva">
-                    <p style="text-align: center;">
-                        Tus datos
-                    </p>
+            <div class="parte_drch_pago_reserva" style="width: 85%;">
+                <p style="text-align: center;">
+                    Datos del hotel
+                </p>
 
-                    <!-- <div class="parte_drch_img_info">
-                        <img src="img/ejemplo1.PNG" width="250" height="250">
-                        <div class="parte_drch_info">
-                            <p class="titulo_hotel_pago_reserva">
-                                SPA RESORT BUENAS TARDES
-                            </p>
-                            <div class="location_descr_parte_drch">
-                                <img src="img/location.png" height="30" width="30">
-                                <p>
-                                    calle miarma 52
-                                </p>
-                            </div>
+                <div class="parte_drch_img_info">
+                    <!-- <img src="img/ejemplo1.PNG" width="250" height="250"> -->
+                    <div class="parte_drch_info">
+                        <p class="titulo_hotel_pago_reserva" id="idHotel">
+
+                        </p>
+                        <div class="location_descr_parte_drch" id="Localizacion">
+                            <!-- <img src="img/location.png" height="30" width="30">
                             <p>
-                                8,4
-                            </p>
-
+                                calle miarma 52
+                            </p> -->
                         </div>
-                    </div> -->
+                        <!-- <p>
+                            8,4
+                        </p> -->
+
+                    </div>
+                    <div id="datosCliente">
+                        <p>Tus datos</p>
+                    </div>
 
 
-                    <!-- <form action="" class="form_pago_reserva">
+                </div>
+
+
+                <!-- <form action="" class="form_pago_reserva">
                         <label>Nombre</label>
                         <input type="text" placeholder="Nombre">
 
@@ -163,13 +172,16 @@
 
 
 
-                </div>
+            </div>
 
 
 
 
-            </section>
+        </section>
+        <div style="display: flex; justify-content: center;">
+            <button id="botonReserva"> Confirmar </button>
 
+        </div>
 
 </body>
 

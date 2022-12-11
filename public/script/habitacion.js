@@ -82,7 +82,7 @@ const selects = document.getElementsByClassName("select");
 let hab = 0;
 let cap = 0;
 for (const select of selects) {
-  select.addEventListener("change", (e) => {
+  select.addEventListener("change", (_e) => {
     cap = 0;
     hab = 0;
     for (const num of selects) {

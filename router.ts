@@ -3,6 +3,7 @@ import hotel from "./api/hotel.ts";
 import persona from "./api/persona.ts";
 import habitacion from "./api/habitacion.ts";
 import ubicacion from "./api/ubicacion.ts";
+import reserva from "./api/reserva.ts";
 
 const router = new Router();
 router
@@ -102,6 +103,8 @@ router
       ctx.response.body = await hotel.getByUbicacion(
         ctx.request.url.searchParams,
       );
+    } else if (ctx.request.url.searchParams.has("idHotel")) {
+      ctx.response.body = await hotel.getById(ctx.request.url.searchParams);
     } else {
       ctx.response.body = await hotel.getAll();
     }
@@ -109,6 +112,13 @@ router
   .get("/api/hotel/habitacion.ts", async (ctx) => {
     if (ctx.request.url.searchParams.has("idHotel")) {
       ctx.response.body = await habitacion.getByHotel(
+        ctx.request.url.searchParams,
+      );
+    }
+  })
+  .get("/api/cliente/reserva.ts", async (ctx) => {
+    if (ctx.request.url.searchParams.has("DNICliente")) {
+      ctx.response.body = await reserva.getByCliente(
         ctx.request.url.searchParams,
       );
     }
@@ -126,5 +136,8 @@ router
     ctx.response.body = await habitacion.postHabitacion(
       ctx.request.body().value,
     );
+  })
+  .post("/api/hotel/habitacion/reserva.ts", async (ctx) => {
+    ctx.response.body = await reserva.postReserva(ctx.request.body().value);
   });
 export default router;

@@ -46,3 +46,22 @@ if (Sesion.Rol == "hotelero") {
     sec.appendChild(div);
   }
 }
+
+if (Sesion.Rol == "cliente") {
+  const resp = await fetch(`/api/cliente/reserva.ts?DNICliente=${Sesion.DNI}`);
+  const data = await resp.json();
+  for (const reserva of data) {
+    sec.appendChild(separador);
+    const div = document.createElement("div");
+    div.id = reserva.CodigoReserva;
+    for (const prop in reserva) {
+      const label = document.createElement("label");
+      label.innerHTML = prop;
+      div.appendChild(label);
+      const div2 = document.createElement("div");
+      div2.innerHTML = reserva[prop];
+      div.appendChild(div2);
+    }
+    sec.appendChild(div);
+  }
+}
