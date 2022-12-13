@@ -36,46 +36,59 @@ if (sessionStorage.getItem("login")) {
 }
 
 const URLsearch = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(URLsearch);
 
 const resp = await fetch(`/api/hotel/habitacion.ts?${URLsearch}`);
 const habitaciones = await resp.json();
 
 const tabla = document.getElementById("tabla");
 
-habitaciones.forEach((element) => {
+for await (const habitacion of habitaciones) {
+  let numhab = 0;
   const tr = document.createElement("tr");
   const tipo = document.createElement("td");
   tr.appendChild(tipo);
-  tr.id = element.idhabitacion;
-  tipo.innerHTML = element.Categoria;
+  tr.id = habitacion.idhabitacion;
+  tipo.innerHTML = habitacion.Categoria;
   tipo.className = "Categoria";
   const capacidad = document.createElement("td");
   tr.appendChild(capacidad);
-  capacidad.innerHTML = element.Capacidad;
+  capacidad.innerHTML = habitacion.Capacidad;
   capacidad.className = "Capacidad";
   const regimen = document.createElement("td");
   tr.appendChild(regimen);
-  regimen.innerHTML = element.Regimen;
+  regimen.innerHTML = habitacion.Regimen;
   regimen.className = "Regimen";
   const precio = document.createElement("td");
   tr.appendChild(precio);
-  precio.innerHTML = element.Precio + "€";
+  precio.innerHTML = habitacion.Precio + "€";
   precio.className = "Precio";
   const cantidad = document.createElement("td");
   tr.appendChild(cantidad);
   const select = document.createElement("select");
   select.className = "select";
-  for (let i = 0; i <= element.NumeroHabitacion; i++) {
+
+  const reservasHotel = await fetch(
+    `/api/hotel/habitacion/reserva.ts?idhabitacion=${habitacion.idhabitacion}&dateEntrada=${params.dateEntrada}&dateSalida=${params.dateSalida}`
+  );
+  const reservas = await reservasHotel.json();
+  for (const reserva of reservas) {
+    numhab = numhab - reserva.NumeroHabitacion;
+    console.log(reserva);
+  }
+  numhab = numhab + habitacion.NumeroHabitacion;
+  console.log(numhab);
+  for (let i = 0; i <= numhab; i++) {
     const option = document.createElement("option");
     option.value = i;
     option.innerHTML = i;
     select.appendChild(option);
   }
-  cantidad.innerHTML = element.NumeroHabitacion;
+  cantidad.innerHTML = habitacion.NumeroHabitacion;
   cantidad.appendChild(select);
   cantidad.className = "Cantidad";
   tabla.appendChild(tr);
-});
+}
 
 const info = document.getElementById("infoReserva");
 const selects = document.getElementsByClassName("select");

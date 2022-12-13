@@ -116,6 +116,13 @@ router
       );
     }
   })
+  .get("/api/hotel/habitacion/reserva.ts", async (ctx) => {
+    if (ctx.request.url.searchParams.has("idhabitacion")) {
+      ctx.response.body = await reserva.getByHabitacion(
+        ctx.request.url.searchParams,
+      );
+    }
+  })
   .get("/api/cliente/reserva.ts", async (ctx) => {
     if (ctx.request.url.searchParams.has("DNICliente")) {
       ctx.response.body = await reserva.getByCliente(

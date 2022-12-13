@@ -7,8 +7,15 @@ export default {
   },
   async getByHabitacion(urlSearch: URLSearchParams) {
     const idhabitacion = urlSearch.get("idhabitacion");
+    const FechaEntrada = urlSearch.get("dateEntrada");
+    const FechaSalida = urlSearch.get("dateSalida");
+
     return await client.query(
-      `select * from fecha_reserva where idhabitacion = ${idhabitacion}`,
+      `select idhabitacion,NumeroHabitacion from fecha_reserva where idhabitacion = ${idhabitacion} and 
+      ((FechaEntrada <= '${FechaEntrada}' and FechaSalida >= '${FechaSalida}') or
+       (FechaEntrada >= '${FechaEntrada}' and FechaSalida <= '${FechaSalida}') or
+       (FechaEntrada >= '${FechaEntrada}' and FechaSalida >= '${FechaSalida}' and FechaEntrada <= '${FechaSalida}') or
+       (FechaEntrada <= '${FechaEntrada}' and FechaSalida <= '${FechaSalida}' and FechaSalida >= '${FechaEntrada}'))`,
     );
   },
   async getByCliente(urlSearch: URLSearchParams) {
@@ -40,5 +47,12 @@ export default {
     );
     /*`insert into fecha_reserva values (${id}, ${data.fields.FechaEntrada}, ${data.fields.FechaSalida}, ${data.fields.DNICliente}, ${data.fields.idhabitacion}, ${data.fields.NumeroHabitacion})`,
     );*/
+  },
+  async deteltereserva(urlSearch: URLSearchParams) {
+    const DNICliente = urlSearch.get("DNICliente");
+    const idhabitacion = urlSearch.get("idhabitacion");
+    return await client.query(
+      `delete from fecha_reserva where DNIcliente = '${DNICliente}' and idhabitacion=${idhabitacion}`,
+    );
   },
 };

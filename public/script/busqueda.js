@@ -60,6 +60,17 @@ for (const key in params) {
   }
 }
 
+const hoy = new Date().toISOString().split("T")[0];
+
+form_busqueda.children.dateEntrada.min = hoy;
+
+form_busqueda.children.dateSalida.min = form_busqueda.children.dateEntrada.min;
+
+form_busqueda.children.dateEntrada.addEventListener("input", (e) => {
+  form_busqueda.children.dateSalida.value = "";
+  form_busqueda.children.dateSalida.min = e.target.value;
+});
+
 const resp = await fetch(`/api/hotel.ts?${URLsearch}`);
 const hoteles = await resp.json();
 
@@ -67,11 +78,12 @@ const parrafo = document.getElementById("parrafo");
 const resultados = document.getElementById("resultados");
 parrafo.innerHTML = `Has encontrado ${hoteles.length} hoteles`;
 
-hoteles.forEach(async (element) => {
-  const resps2 = await fetch(
-    `/api/hotel/habitacion.ts?idHotel=${element.idHotel}`
+for (const hotel of hoteles) {
+  const habHotel = await fetch(
+    `/api/hotel/habitacion.ts?idHotel=${hotel.idHotel}`
   );
-  const habitaciones = await resps2.json();
+  const habitaciones = await habHotel.json();
+
   const section = document.createElement("section");
   section.className = "ejemplo";
 
@@ -82,7 +94,7 @@ hoteles.forEach(async (element) => {
   div2.className = "ejemplo_tit_descrp";
   div2.innerHTML =
     "<p>" +
-    `${element.NombreHotel}` +
+    `${hotel.NombreHotel}` +
     "</p>" +
     "<p>" +
     `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus, tempore.` +
@@ -90,21 +102,28 @@ hoteles.forEach(async (element) => {
 
   const div3 = document.createElement("div");
   let numHab = 0;
-  habitaciones.forEach((element) => {
-    numHab = numHab + element.NumeroHabitacion;
-  });
-
+  for await (const habitacion of habitaciones) {
+    const reservasHotel = await fetch(
+      `/api/hotel/habitacion/reserva.ts?idhabitacion=${habitacion.idhabitacion}&dateEntrada=${params.dateEntrada}&dateSalida=${params.dateSalida}`
+    );
+    const reservas = await reservasHotel.json();
+    for (const reserva of reservas) {
+      console.log(reserva);
+      numHab = numHab - reserva.NumeroHabitacion;
+    }
+    numHab = numHab + habitacion.NumeroHabitacion;
+  }
   div3.className = "ejemplo_nota_precio_disp";
   div3.innerHTML =
     "<div>" +
     `Habitaciones disponibles ${numHab}` +
     "</div>" +
     "<div>" +
-    `<button class="boton_naranja" onclick="location.href='/habitacionHotel?idHotel=${element.idHotel}&dateEntrada=${params.dateEntrada}&dateSalida=${params.dateSalida}'">Ver<br>disponibilidad</button>`;
+    `<button class="boton_naranja" onclick="location.href='/habitacionHotel?idHotel=${hotel.idHotel}&dateEntrada=${params.dateEntrada}&dateSalida=${params.dateSalida}'">Ver<br>disponibilidad</button>`;
   ("</div>");
 
   div.appendChild(div2);
   div.appendChild(div3);
   section.appendChild(div);
   resultados.appendChild(section);
-});
+}

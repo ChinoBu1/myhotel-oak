@@ -13,15 +13,15 @@ for (const prop in Sesion) {
   div.innerHTML = Sesion[prop];
   sec.appendChild(div);
 }
-const separador = document.createElement("hr");
-separador.style.backgroundColor = "black";
-separador.style.width = "100%";
-separador.style.height = "2px";
 
 if (Sesion.Rol == "hotelero") {
   const resp = await fetch(`/api/hotel.ts?NIFhostelero=${Sesion.DNI}`);
   const data = await resp.json();
   for (const hotel of data) {
+    const separador = document.createElement("div");
+    separador.style.backgroundColor = "black";
+    separador.style.width = "100%";
+    separador.style.height = "2px";
     sec.appendChild(separador);
     const div = document.createElement("div");
     div.id = hotel.idHotel;
@@ -51,6 +51,10 @@ if (Sesion.Rol == "cliente") {
   const resp = await fetch(`/api/cliente/reserva.ts?DNICliente=${Sesion.DNI}`);
   const data = await resp.json();
   for (const reserva of data) {
+    const separador = document.createElement("div");
+    separador.style.backgroundColor = "black";
+    separador.style.width = "100%";
+    separador.style.height = "2px";
     sec.appendChild(separador);
     const div = document.createElement("div");
     div.id = reserva.CodigoReserva;
