@@ -38,6 +38,7 @@ if (sessionStorage.getItem("login")) {
 const dateEntrada = document.getElementById("dateEntrada");
 const dateSalida = document.getElementById("dateSalida");
 const duracion = document.getElementById("duracion");
+const desglose = document.getElementById("desglose");
 
 const URLsearch = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(URLsearch);
@@ -52,9 +53,27 @@ dateSalida.innerHTML =
   Salida.getDate() + "/" + Salida.getMonth() + "/" + Salida.getFullYear();
 
 const diasDuracion =
-  (Salida.getTime() - Entrada.getTime()) / (1000 * 3600 * 24) + " dias";
+  (Salida.getTime() - Entrada.getTime()) / (1000 * 3600 * 24);
 
-duracion.innerHTML = diasDuracion;
+duracion.innerHTML = diasDuracion + " dias";
+
+let total = 0;
+const totaldiv = document.createElement("div");
+const resps = await fetch(
+  `/api/hotel/habitacion.ts?idhabitacion=${params.hab}`
+);
+const habitaciones = await resps.json();
+for (const habitacion of habitaciones) {
+  const div = document.createElement("div");
+  div.innerHTML = `${habitacion.Categoria} a ${
+    habitacion.Precio
+  }€ noche \t \t ${habitacion.Precio * diasDuracion}€`;
+  total = total + habitacion.Precio * diasDuracion;
+  desglose.appendChild(div);
+}
+
+totaldiv.innerHTML = "Total" + total + "€";
+desglose.appendChild(totaldiv);
 
 const resp = await fetch(`/api/hotel.ts?idHotel=${params.idHotel}`);
 const hoteles = await resp.json();

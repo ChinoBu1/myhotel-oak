@@ -114,6 +114,10 @@ router
       ctx.response.body = await habitacion.getByHotel(
         ctx.request.url.searchParams,
       );
+    } else if (ctx.request.url.searchParams.has("idhabitacion")) {
+      ctx.response.body = await habitacion.getById(
+        ctx.request.url.searchParams,
+      );
     }
   })
   .get("/api/hotel/habitacion/reserva.ts", async (ctx) => {

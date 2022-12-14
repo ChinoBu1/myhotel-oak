@@ -65,6 +65,8 @@ for await (const habitacion of habitaciones) {
   precio.className = "Precio";
   const cantidad = document.createElement("td");
   tr.appendChild(cantidad);
+  const cantidaddeseada = document.createElement("td");
+  tr.appendChild(cantidaddeseada);
   const select = document.createElement("select");
   select.className = "select";
 
@@ -74,19 +76,18 @@ for await (const habitacion of habitaciones) {
   const reservas = await reservasHotel.json();
   for (const reserva of reservas) {
     numhab = numhab - reserva.NumeroHabitacion;
-    console.log(reserva);
   }
   numhab = numhab + habitacion.NumeroHabitacion;
-  console.log(numhab);
   for (let i = 0; i <= numhab; i++) {
     const option = document.createElement("option");
     option.value = i;
     option.innerHTML = i;
     select.appendChild(option);
   }
-  cantidad.innerHTML = habitacion.NumeroHabitacion;
-  cantidad.appendChild(select);
+  cantidad.innerHTML = numhab;
+  cantidaddeseada.appendChild(select);
   cantidad.className = "Cantidad";
+  cantidaddeseada.className = "Deseada";
   tabla.appendChild(tr);
 }
 

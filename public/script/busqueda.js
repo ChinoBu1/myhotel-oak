@@ -97,7 +97,7 @@ for (const hotel of hoteles) {
     `${hotel.NombreHotel}` +
     "</p>" +
     "<p>" +
-    `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus, tempore.` +
+    `Direccion: ${hotel.Direccion}` +
     "</p>";
 
   const div3 = document.createElement("div");

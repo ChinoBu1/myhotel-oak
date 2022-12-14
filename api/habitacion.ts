@@ -5,6 +5,12 @@ export default {
   async getAll() {
     return await client.query(`select * from habitacion`);
   },
+  async getById(urlSearch: URLSearchParams) {
+    const idhabitacion = urlSearch.get("idhabitacion");
+    return await client.query(
+      `select * from habitacion where idhabitacion in (${idhabitacion})`,
+    );
+  },
   async getByHotel(urlSearch: URLSearchParams) {
     const idHotel = urlSearch.get("idHotel");
     return await client.query(
