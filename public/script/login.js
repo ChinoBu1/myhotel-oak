@@ -14,7 +14,7 @@ form.addEventListener('submit', async (e) => {
         if(formData.get('Sesion')){
             localStorage.setItem("login", JSON.stringify(user))
         }
-        location.replace("/")
+        history.back()
     }
 });
 

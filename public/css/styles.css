@@ -33,6 +33,10 @@ input[type=number] {
     appearance: textfield;
 }
 
+input[type=submit]:hover{
+    cursor:pointer;
+}
+
 input {
     border: 0;
 }
@@ -243,13 +247,13 @@ footer img {
 
 .form_barra_busqueda input {
     background-color: #ffffff;
-    border: 5px solid yellow;
+    border: 5px solid #78DBCC;
     font-size: 20px;
     padding: 5px;
 }
 .form_barra_busqueda select {
     background-color: #ffffff;
-    border: 5px solid yellow;
+    border: 5px solid #78DBCC;
     font-size: 20px;
     padding: 5px;
 }

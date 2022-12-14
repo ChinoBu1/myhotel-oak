@@ -67,5 +67,9 @@ if (Sesion.Rol == "cliente") {
       div.appendChild(div2);
     }
     sec.appendChild(div);
+    const borrar = document.createElement("button");
+    borrar.innerHTML = "Borrar Reserva"
+    borrar.addEventListener('click')
+    sec.appendChild(borrar)
   }
 }

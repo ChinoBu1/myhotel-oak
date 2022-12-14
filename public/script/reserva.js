@@ -63,12 +63,14 @@ const resps = await fetch(
   `/api/hotel/habitacion.ts?idhabitacion=${params.hab}`
 );
 const habitaciones = await resps.json();
-for (const habitacion of habitaciones) {
+const cantidadHabitaciones = params.num.split(",");
+for (let i = 0; i < habitaciones.length ; i++) {
   const div = document.createElement("div");
-  div.innerHTML = `${habitacion.Categoria} a ${
-    habitacion.Precio
-  }€ noche \t \t ${habitacion.Precio * diasDuracion}€`;
-  total = total + habitacion.Precio * diasDuracion;
+  div.innerHTML = `${habitaciones[i].Categoria} a ${
+    habitaciones[i].Precio
+  }€ noche \t \t ${habitaciones[i].Precio * diasDuracion}€`;
+  total = total + habitaciones[i].Precio * diasDuracion;
+  total = total*cantidadHabitaciones[i];
   desglose.appendChild(div);
 }
 
@@ -105,7 +107,7 @@ const botonReserva = document.getElementById("botonReserva");
 
 botonReserva.addEventListener("click", async () => {
   if (Sesion) {
-    if (confirm("inicado proceso de pago") == true) {
+    if (confirm("iniciado proceso de pago") == true) {
       const formData = new FormData();
       formData.append("idHotel", params.idHotel);
       formData.append("FechaEntrada", params.dateEntrada);
@@ -117,10 +119,11 @@ botonReserva.addEventListener("click", async () => {
         method: "POST",
         body: formData,
       });
+      location.replace("/gracias");
 
       console.log(await reps.json());
     }
   } else {
-    alert("Por favor inice sesion o registrese");
+    alert("Por favor inicie sesión y/o regístrese");
   }
 });

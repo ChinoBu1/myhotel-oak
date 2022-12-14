@@ -61,6 +61,13 @@ router
     ctx.response.body = page;
     ctx.response.headers.set("Content-Type", "text/html");
   })
+  .get("/gracias", async (ctx) => {
+    const page = await Deno.readFile(
+      `${Deno.cwd()}/public/gracias.html`,
+    );
+    ctx.response.body = page;
+    ctx.response.headers.set("Content-Type", "text/html");
+  })
   .get("/img/:img", async (ctx) => {
     const imageBuf = await Deno.readFile(
       `${Deno.cwd()}/public/img/${ctx.params.img}`,
@@ -150,5 +157,8 @@ router
   })
   .post("/api/hotel/habitacion/reserva.ts", async (ctx) => {
     ctx.response.body = await reserva.postReserva(ctx.request.body().value);
+  })
+  .delete("/api/cliente/reserva.ts", async (ctx) => {
+    ctx.response.body = await reserva.deletereserva(ctx.request.body().value);
   });
 export default router;
