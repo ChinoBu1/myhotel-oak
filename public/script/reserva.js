@@ -52,8 +52,10 @@ dateEntrada.innerHTML =
 dateSalida.innerHTML =
   Salida.getDate() + "/" + Salida.getMonth() + "/" + Salida.getFullYear();
 
-const diasDuracion =
-  (Salida.getTime() - Entrada.getTime()) / (1000 * 3600 * 24);
+const diasDuracion = Math.max(
+  (Salida.getTime() - Entrada.getTime()) / (1000 * 3600 * 24),
+  1
+);
 
 duracion.innerHTML = diasDuracion + " dias";
 
@@ -64,13 +66,13 @@ const resps = await fetch(
 );
 const habitaciones = await resps.json();
 const cantidadHabitaciones = params.num.split(",");
-for (let i = 0; i < habitaciones.length ; i++) {
+for (let i = 0; i < habitaciones.length; i++) {
   const div = document.createElement("div");
   div.innerHTML = `${habitaciones[i].Categoria} a ${
     habitaciones[i].Precio
   }€ noche \t \t ${habitaciones[i].Precio * diasDuracion}€`;
   total = total + habitaciones[i].Precio * diasDuracion;
-  total = total*cantidadHabitaciones[i];
+  total = total * cantidadHabitaciones[i];
   desglose.appendChild(div);
 }
 
