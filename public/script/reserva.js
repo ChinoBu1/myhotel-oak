@@ -108,7 +108,7 @@ for (const key in Sesion) {
 const botonReserva = document.getElementById("botonReserva");
 
 botonReserva.addEventListener("click", async () => {
-  if (Sesion) {
+  if (Sesion && Sesion.Rol == "cliente") {
     if (confirm("iniciado proceso de pago") == true) {
       const formData = new FormData();
       formData.append("idHotel", params.idHotel);
@@ -125,6 +125,6 @@ botonReserva.addEventListener("click", async () => {
       location.replace("/gracias?codigoReserva=" + codigoReserva + "&&fechaEntrada=" + params.dateEntrada + "&&fechaSalida=" + params.dateSalida);
     }
   } else {
-    alert("Por favor inicie sesión y/o regístrese");
+    alert("Por favor inicie sesión y/o regístrese como cliente");
   }
 });

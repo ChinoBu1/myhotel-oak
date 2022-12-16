@@ -37,10 +37,18 @@ export default {
       const resp = await client.query(
         `select CodigoPostal from ubicacion where NombreCiudad = '${Localizacion}'`,
       );
+      let hoteles: string | any[] = [];
+      for (const CodigoPostal of resp) {
+        console.log(CodigoPostal);
 
-      return await client.query(
-        `select * from hotel where CodigoPostal = ${resp[0].CodigoPostal}`,
-      );
+        hoteles = hoteles.concat(
+          await client.query(
+            `select * from hotel where CodigoPostal = ${CodigoPostal.CodigoPostal}`,
+          ),
+        );
+      }
+
+      return hoteles;
     } catch (e) {
       console.log(e);
       return [];

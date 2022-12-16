@@ -594,9 +594,16 @@ left: 0;
 }
 
 
-
-
-
+.ejemplo {
+    margin: 2px;
+    border: solid #000000 2px;
+}
+.ejemplo_nota_precio_disp {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+}
 th,
 td {
     border: 1px solid black;
