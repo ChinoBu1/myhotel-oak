@@ -121,9 +121,8 @@ botonReserva.addEventListener("click", async () => {
         method: "POST",
         body: formData,
       });
-      location.replace("/gracias");
-
-      console.log(await reps.json());
+      var codigoReserva = (await reps.json())[0].CodigoReserva; //TODO: Actualmente se envía un array de todos los códigos de las reservas para el mismo cliente y las mismas fechas
+      location.replace("/gracias?codigoReserva=" + codigoReserva + "&&fechaEntrada=" + params.dateEntrada + "&&fechaSalida=" + params.dateSalida);
     }
   } else {
     alert("Por favor inicie sesión y/o regístrese");
