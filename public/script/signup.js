@@ -28,7 +28,7 @@ form.addEventListener("submit", async (e) => {
       alert("fallo en el formulario");
     } else {
       alert("Usuario registrado");
-      history.back();
+      location.replace("/");
     }
   }
 });

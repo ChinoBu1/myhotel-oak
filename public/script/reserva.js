@@ -108,7 +108,7 @@ for (const key in Sesion) {
 const botonReserva = document.getElementById("botonReserva");
 
 botonReserva.addEventListener("click", async () => {
-  if (Sesion) {
+  if (Sesion && Sesion.Rol == "cliente") {
     if (confirm("iniciado proceso de pago") == true) {
       const formData = new FormData();
       formData.append("idHotel", params.idHotel);
