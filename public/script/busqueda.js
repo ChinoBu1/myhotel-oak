@@ -115,11 +115,11 @@ for (const hotel of hoteles) {
   }
   div3.className = "ejemplo_nota_precio_disp";
   div3.innerHTML =
-    "<div>" +
+    "<div style='align-self: flex-start;'>" +
     `Habitaciones disponibles ${numHab}` +
     "</div>" +
     "<div>" +
-    `<button class="boton_naranja" onclick="location.href='/habitacionHotel?idHotel=${hotel.idHotel}&dateEntrada=${params.dateEntrada}&dateSalida=${params.dateSalida}'">Ver<br>disponibilidad</button>`;
+    `<button class="boton_naranja"  onclick="location.href='/habitacionHotel?idHotel=${hotel.idHotel}&dateEntrada=${params.dateEntrada}&dateSalida=${params.dateSalida}'">Ver<br>disponibilidad</button>`;
   ("</div>");
 
   div.appendChild(div2);

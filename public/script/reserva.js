@@ -126,6 +126,6 @@ botonReserva.addEventListener("click", async () => {
       console.log(await reps.json());
     }
   } else {
-    alert("Por favor inicie sesión y/o regístrese");
+    alert("Por favor inicie sesión y/o regístrese como cliente");
   }
 });
