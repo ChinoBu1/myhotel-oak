@@ -108,7 +108,7 @@ for (const key in Sesion) {
 const botonReserva = document.getElementById("botonReserva");
 
 botonReserva.addEventListener("click", async () => {
-  if (Sesion) {
+  if (Sesion && Sesion.Rol == "cliente") {
     if (confirm("iniciado proceso de pago") == true) {
       const formData = new FormData();
       formData.append("idHotel", params.idHotel);
@@ -121,11 +121,10 @@ botonReserva.addEventListener("click", async () => {
         method: "POST",
         body: formData,
       });
-      location.replace("/gracias");
-
-      console.log(await reps.json());
+      var codigoReserva = (await reps.json())[0].CodigoReserva; //TODO: Actualmente se envía un array de todos los códigos de las reservas para el mismo cliente y las mismas fechas
+      location.replace("/gracias?codigoReserva=" + codigoReserva + "&&fechaEntrada=" + params.dateEntrada + "&&fechaSalida=" + params.dateSalida);
     }
   } else {
-    alert("Por favor inicie sesión y/o regístrese");
+    alert("Por favor inicie sesión y/o regístrese como cliente");
   }
 });

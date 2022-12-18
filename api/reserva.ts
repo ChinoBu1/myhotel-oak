@@ -59,7 +59,7 @@ export default {
   ) {
     const CodigoReserva = await body;
     return await client.query(
-      `delete from fecha_reserva where CodigoReserva='${CodigoReserva}'`,
+      `delete from fecha_reserva where and CodigoReserva=${CodigoReserva}`,
     );
   },
 };
