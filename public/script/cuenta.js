@@ -68,8 +68,16 @@ if (Sesion.Rol == "cliente") {
     }
     sec.appendChild(div);
     const borrar = document.createElement("button");
-    borrar.innerHTML = "Borrar Reserva"
-    borrar.addEventListener('click')
-    sec.appendChild(borrar)
+    borrar.innerHTML = "Borrar Reserva";
+    borrar.addEventListener("click", () => {
+      if (confirm("Seguro quiere eliminar la reserva") == true) {
+        const _resp = fetch("/api/cliente/reserva.ts", {
+          method: "DELETE",
+          body: div.id,
+        });
+        location.reload();
+      }
+    });
+    sec.appendChild(borrar);
   }
 }

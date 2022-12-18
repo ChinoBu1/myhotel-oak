@@ -48,10 +48,18 @@ export default {
     /*`insert into fecha_reserva values (${id}, ${data.fields.FechaEntrada}, ${data.fields.FechaSalida}, ${data.fields.DNICliente}, ${data.fields.idhabitacion}, ${data.fields.NumeroHabitacion})`,
     );*/
   },
-  async deletereserva(urlSearch: URLSearchParams) {
-    const CodigoReserva = urlSearch.get("CodigoReserva");
+  async deletereserva(
+    body:
+      | Promise<Uint8Array>
+      | FormDataReader
+      | Promise<any>
+      | Promise<URLSearchParams>
+      | Promise<string>
+      | undefined,
+  ) {
+    const CodigoReserva = await body;
     return await client.query(
-      `delete from fecha_reserva where and CodigoReserva=${CodigoReserva}`,
+      `delete from fecha_reserva where CodigoReserva='${CodigoReserva}'`,
     );
   },
 };
