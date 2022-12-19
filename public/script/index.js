@@ -52,7 +52,11 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(form);
   const params = new URLSearchParams(formData);
-  location.replace(`/?${params}`);
+  if (params.get("Localizacion")) {
+    location.replace(`/?${params}`);
+  } else {
+    alert("Seleccione una localizacion");
+  }
 });
 const hoy = new Date().toISOString().split("T")[0];
 
