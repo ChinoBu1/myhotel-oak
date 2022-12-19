@@ -25,6 +25,8 @@ if (Sesion.Rol == "hotelero") {
     sec.appendChild(separador);
     const div = document.createElement("div");
     div.id = hotel.idHotel;
+    div.style.display = "flex";
+    div.style.flexDirection = "column";
     for (const prop in hotel) {
       if (prop != "idHotel") {
         const label = document.createElement("label");
@@ -58,13 +60,24 @@ if (Sesion.Rol == "cliente") {
     sec.appendChild(separador);
     const div = document.createElement("div");
     div.id = reserva.CodigoReserva;
+    div.style.display = "flex";
+    div.style.flexDirection = "column";
     for (const prop in reserva) {
-      const label = document.createElement("label");
-      label.innerHTML = prop;
-      div.appendChild(label);
-      const div2 = document.createElement("div");
-      div2.innerHTML = reserva[prop];
-      div.appendChild(div2);
+      if (prop != "idhabitacion") {
+        const label = document.createElement("label");
+        label.innerHTML = prop;
+        div.appendChild(label);
+        const div2 = document.createElement("div");
+        if (prop == "FechaEntrada" || prop == "FechaSalida") {
+          const fecha = new Date(reserva[prop]);
+          div2.innerHTML = `${fecha.getDate()}/${
+            fecha.getMonth() + 1
+          }/${fecha.getFullYear()}`;
+        } else {
+          div2.innerHTML = reserva[prop];
+        }
+        div.appendChild(div2);
+      }
     }
     sec.appendChild(div);
     const borrar = document.createElement("button");
@@ -75,7 +88,7 @@ if (Sesion.Rol == "cliente") {
           method: "DELETE",
           body: div.id,
         });
-        location.reload();
+        location.replace(window.location.href);
       }
     });
     sec.appendChild(borrar);

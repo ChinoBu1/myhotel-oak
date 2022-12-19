@@ -52,6 +52,7 @@ export default {
     body:
       | Promise<Uint8Array>
       | FormDataReader
+      // deno-lint-ignore no-explicit-any
       | Promise<any>
       | Promise<URLSearchParams>
       | Promise<string>
