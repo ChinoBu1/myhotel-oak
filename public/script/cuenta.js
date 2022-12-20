@@ -83,7 +83,7 @@ if (Sesion.Rol == "cliente") {
     const borrar = document.createElement("button");
     borrar.innerHTML = "Cancelar Reserva";
     borrar.addEventListener("click", async () => {
-      if (confirm("¿Esta seguro de  quiere eliminar la reserva?") == true) {
+      if (confirm("¿Esta seguro de que quiere eliminar la reserva?") == true) {
         const _resp = await fetch("/api/cliente/reserva.ts", {
           method: "DELETE",
           body: div.id,
