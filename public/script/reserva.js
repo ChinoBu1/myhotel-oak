@@ -121,7 +121,7 @@ botonReserva.addEventListener("click", async () => {
         method: "POST",
         body: formData,
       });
-      var codigoReserva = (await reps.json())[0].CodigoReserva;
+      const codigoReserva = (await reps.json())[0].CodigoReserva;
       location.replace(
         "/gracias?codigoReserva=" +
           codigoReserva +
