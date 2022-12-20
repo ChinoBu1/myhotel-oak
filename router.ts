@@ -102,7 +102,7 @@ router
     }
   })
   .get("/api/hotel.ts", async (ctx) => {
-    if (ctx.request.url.searchParams.has("Administrador")) {
+    if (ctx.request.url.searchParams.has("NIFhostelero")) {
       ctx.response.body = await hotel.getByAdministrador(
         ctx.request.url.searchParams,
       );
