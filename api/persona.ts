@@ -16,7 +16,8 @@ export default {
     const Pass = urlSearch.get("Pasword");
     const Email = urlSearch.get("Email");
     return await client.query(
-      `SELECT * FROM persona WHERE Pasword = '${Pass}' AND Email = '${Email}'`,
+      `SELECT * FROM persona WHERE Pasword = ? AND Email = ?`,
+      [Pass, Email],
     );
   },
   // deno-lint-ignore no-explicit-any
@@ -24,7 +25,15 @@ export default {
     const data = await form.read();
     try {
       return await client.query(
-        `INSERT INTO persona VALUES ('${data.fields.DNI}', '${data.fields.Nombre}', '${data.fields.Apellidos}', '${data.fields.Email}','${data.fields.Pasword}', '${data.fields.Telefono}', 2)`,
+        `INSERT INTO persona VALUES (?, ?, ?, ?, ?, ?, 2)`,
+        [
+          data.fields.DNI,
+          data.fields.Nombre,
+          data.fields.Apellidos,
+          data.fields.Email,
+          data.fields.Pasword,
+          data.fields.Telefono,
+        ],
       );
     } catch (_error) {
       return [];
