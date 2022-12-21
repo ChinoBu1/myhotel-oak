@@ -23,12 +23,11 @@
 <body>
     <script src="/script/reserva.js" type="module"></script>
     <header>
-        <header>
-            <nav class="navegador">
-                <a href="/" style="width: fit-content;">
-                    <img src="img/logo.png" width="250" height="100">
-                </a>
-<!-- 
+        <nav class="navegador">
+            <a href="/" style="width: fit-content;">
+                <img src="img/logo.png" width="250" height="100">
+            </a>
+            <!-- 
                 <button class="boton_naranja hostelero" style="display: none;" 
                     onclick="location.href='registro_alojamiento.html'">Registra tu
                     alojamiento</button>
@@ -36,106 +35,85 @@
                 <button class="boton_naranja nosesion" onclick="location.href='/registro'">Registrate</button>
                 <div class="sesion" id="nombre"></div>
                 <button class="boton_naranja sesion" style="display: none;" id="logout">Log out</button> -->
-                <div class="navegador_no_logo">
-                    <!-- <a href="#">
+            <div class="navegador_no_logo">
+                <!-- <a href="#">
                         <img src="img/band_inglesa.png" width="66,66" height="40">
                     </a> -->
-
-                    <a href="preguntas_frecuentes.html">
-                        <img src="img/help.png" width="40" height="40">
-                    </a>
-
-                    <button class="boton_naranja hostelero" style="display: none;"
-                        onclick="location.href='/registro_alojamiento'">Registra tu
-                        alojamiento</button>
-                    <button class="boton_naranja nosesion" onclick="location.href='/inicioSesion'">Inicio
-                        Sesion</button>
-                    <button class="boton_naranja nosesion" onclick="location.href='/registro'">Registrate</button>
-                    <div class="sesion" id="nombre"></div>
-                    <button class="boton_naranja sesion" style="display: none;" id="logout">Log out</button>
-
-
-
-                </div>
-            </nav>
-        </header>
-        </nav>
-        <section class="anchura_pagina" style="display: flex; justify-content: space-around; ">
-
-            <div class="parte_izq_pago_reserva">
-                <p style="text-align: center;">
-                    Tu seleción
-                </p>
-
-                <div class="cont_entrada_salida">
-                    <div class="entrada" style="display: flex; flex-direction: column;">
-                        <p>
-                            Entrada
-                        </p>
-                        <div id="dateEntrada">
-
-                        </div>
-                    </div>
-
-
-                    <div class="salida" style="display: flex; flex-direction: column;">
-                        <p>
-                            Salida
-                        <div id="dateSalida">
-
-                        </div>
-                        </p>
-                    </div>
-
-                    <p>
-                        Duración de la estancia:<br>
-                    <div id="duracion">
-
-                    </div>
-                    </p>
-
-                    <p>
-                        Desglose de precio:<br>
-                    <div id="desglose">
-
-                    </div>
-                    </p>
-
-                </div>
-
+                <a href="faq">
+                    <img src="img/help.png" width="40" height="40">
+                </a>
+                <button class="boton_naranja hostelero" style="display: none;"
+                    onclick="location.href='/registro_alojamiento'">Registra tu
+                    alojamiento</button>
+                <button class="boton_naranja nosesion" onclick="location.href='/inicioSesion'">Inicio
+                    Sesion</button>
+                <button class="boton_naranja nosesion" onclick="location.href='/registro'">Registrate</button>
+                <div class="sesion" id="nombre"></div>
+                <button class="boton_naranja sesion" style="display: none;" id="logout">Log out</button>
             </div>
+        </nav>
+    </header>
+    </nav>
+    <section class="anchura_pagina" style="display: flex; justify-content: space-around; ">
 
-            <div class="parte_drch_pago_reserva" style="width: 65%;">
-                <p style="text-align: center;">
-                    Datos del hotel
+        <div class="parte_izq_pago_reserva">
+            <p style="text-align: center;">
+                Tu seleción
+            </p>
+
+            <div class="cont_entrada_salida">
+                <div class="entrada" style="display: flex; flex-direction: column;">
+                    <p>
+                        Entrada
+                    </p>
+                    <div id="dateEntrada">
+                    </div>
+                </div>
+
+
+                <div class="salida" style="display: flex; flex-direction: column;">
+                    <p>
+                        Salida
+                    <div id="dateSalida">
+                    </div>
+                    </p>
+                </div>
+                <p>
+                    Duración de la estancia:<br>
+                <div id="duracion">
+                </div>
                 </p>
-
-                <div class="parte_drch_img_info">
-                    <!-- <img src="img/ejemplo1.PNG" width="250" height="250"> -->
-                    <div class="parte_drch_info">
-                        <p class="titulo_hotel_pago_reserva" id="idHotel">
-
-                        </p>
-                        <div class="location_descr_parte_drch" id="Localizacion">
-                            <!-- <img src="img/location.png" height="30" width="30">
+                <p>
+                    Desglose de precio:<br>
+                <div id="desglose">
+                </div>
+                </p>
+            </div>
+        </div>
+        <div class="parte_drch_pago_reserva" style="width: 65%;">
+            <p style="text-align: center;">
+                Datos del hotel
+            </p>
+            <div class="parte_drch_img_info">
+                <!-- <img src="img/ejemplo1.PNG" width="250" height="250"> -->
+                <div class="parte_drch_info">
+                    <p class="titulo_hotel_pago_reserva" id="idHotel">
+                    </p>
+                    <div class="location_descr_parte_drch" id="Localizacion">
+                        <!-- <img src="img/location.png" height="30" width="30">
                             <p>
                                 calle miarma 52
                             </p> -->
-                        </div>
-                        <!-- <p>
+                    </div>
+                    <!-- <p>
                             8,4
                         </p> -->
-
-                    </div>
-                    <div id="datosCliente">
-                        <p>Tus datos</p>
-                    </div>
-
-
                 </div>
-
-
-                <!-- <form action="" class="form_pago_reserva">
+                <div id="datosCliente">
+                    <p>Tus datos</p>
+                </div>
+            </div>
+            <!-- <form action="" class="form_pago_reserva">
                         <label>Nombre</label>
                         <input type="text" placeholder="Nombre">
 
@@ -179,21 +157,11 @@
                         <input type="button" value="Enviar" onclick="location.href='index.html'" style="width: 140px">
 
                     </form> -->
-
-                <div style="display: flex; justify-content: center;">
-                    <button id="botonReserva"> Confirmar </button>
-
-                </div>
-
-
+            <div style="display: flex; justify-content: center;">
+                <button id="botonReserva"> Confirmar </button>
             </div>
-
-
-
-
-        </section>
-
-
+        </div>
+    </section>
 </body>
 
 </html>

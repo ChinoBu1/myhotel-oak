@@ -25,7 +25,7 @@
 
     <header>
         <nav class="navegador_inicio_sesion">
-            <a href="index.html">
+            <a href="/">
                 <img src="img/logo.png" width="250" height="100" style="justify-content: center;">
             </a>
         </nav>
@@ -33,14 +33,16 @@
 
     <section class="anchura_pagina_gracias">
 
-        <form id="datosReserva">
-            <label>Codigo Reserva:</label>
-            <input type="text" name="CodigoReserva" id="CodigoReserva">
-            <label>Fecha Entrada:</label>
-            <input type="text" name="FechaEntrada" id="FechaEntrada">
-            <label>Fecha Salida:</label>
-            <input type="text" name="FechaSalida" id="FechaSalida">
-        </form>
+        <div style="display: flex; flex-wrap: wrap;">
+            <div style="flex: 15%; margin-top: 5px;">Codigo Reserva:</div>
+            <div id="CodigoReserva" style="flex: 85%; margin-top: 5px;"> </div>
+            <div style="flex: 15%; margin-top: 5px;">Fecha Entrada:</div>
+            <div id="FechaEntrada" style="flex: 85%; margin-top: 5px;"> </div>
+            <div style="flex: 15%; margin-top: 5px;">Fecha Salida:</div>
+            <div id="FechaSalida" style="flex: 85%; margin-top: 5px;"> </div>
+
+        </div>
+
 
         <p>Gracias por su reserva</p>
 
@@ -50,30 +52,31 @@
     </section>
 
 
+
+    <footer>
+
+
+        <div>
+            <a href="https://www.instagram.com/projectmyhotel/">
+                <img src="img/instagram_logo.webp">
+            </a>
+            <a href="#">
+                <img src="img/facebook_logo.png">
+            </a>
+            <a href="#">
+                <img src="img/twitter_logo.webp">
+            </a>
+        </div>
+
+        <div style="margin-left: 10px; margin-right: 10px;">
+            <a href="terminosyCondiciones" style="color: white;">Términos y condiciones</a>
+        </div>
+
+        <p>
+            Todos los derechos reservados
+        </p>
+
+    </footer>
 </body>
-<footer>
-
-
-    <div>
-        <a href="https://www.instagram.com/projectmyhotel/">
-            <img src="img/instagram_logo.webp">
-        </a>
-        <a href="#">
-            <img src="img/facebook_logo.png">
-        </a>
-        <a href="#">
-            <img src="img/twitter_logo.webp">
-        </a>
-    </div>
-
-    <div style="margin-left: 10px; margin-right: 10px;">
-        <a href="terminos_y_condiciones.html" style="color: white;">Términos y condiciones</a>
-    </div>
-
-    <p>
-        Todos los derechos reservados
-    </p>
-
-</footer>
 
 </html>

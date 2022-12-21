@@ -68,6 +68,20 @@ router
     ctx.response.body = page;
     ctx.response.headers.set("Content-Type", "text/html");
   })
+  .get("/terminosycondiciones", async (ctx) => {
+    const page = await Deno.readFile(
+      `${Deno.cwd()}/public/terminosyCondiciones.html`,
+    );
+    ctx.response.body = page;
+    ctx.response.headers.set("Content-Type", "text/html");
+  })
+  .get("/faq", async (ctx) => {
+    const page = await Deno.readFile(
+      `${Deno.cwd()}/public/preguntas_frecuentes.html`,
+    );
+    ctx.response.body = page;
+    ctx.response.headers.set("Content-Type", "text/html");
+  })
   .get("/img/:img", async (ctx) => {
     const imageBuf = await Deno.readFile(
       `${Deno.cwd()}/public/img/${ctx.params.img}`,
