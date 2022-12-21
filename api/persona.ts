@@ -9,7 +9,8 @@ export default {
     const Pass = urlSearch.get("Pass");
     const DNI = urlSearch.get("DNI");
     return await client.query(
-      `UPDATE persona SET Pasword = '${Pass}' WHERE DNI = '${DNI}'`,
+      `UPDATE persona SET Pasword = ? WHERE DNI = ?`,
+      [Pass, DNI],
     );
   },
   async getBiEmailandPass(urlSearch: URLSearchParams) {

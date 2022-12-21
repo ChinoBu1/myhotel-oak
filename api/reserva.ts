@@ -11,17 +11,31 @@ export default {
     const FechaSalida = urlSearch.get("dateSalida");
 
     return await client.query(
-      `select idhabitacion,NumeroHabitacion from fecha_reserva where idhabitacion = ${idhabitacion} and 
-      ((FechaEntrada <= '${FechaEntrada}' and FechaSalida >= '${FechaSalida}') or
-       (FechaEntrada >= '${FechaEntrada}' and FechaSalida <= '${FechaSalida}') or
-       (FechaEntrada >= '${FechaEntrada}' and FechaSalida >= '${FechaSalida}' and FechaEntrada <= '${FechaSalida}') or
-       (FechaEntrada <= '${FechaEntrada}' and FechaSalida <= '${FechaSalida}' and FechaSalida >= '${FechaEntrada}'))`,
+      `select idhabitacion,NumeroHabitacion from fecha_reserva where idhabitacion = ? and 
+      ((FechaEntrada <= ? and FechaSalida >= ?) or
+       (FechaEntrada >= ? and FechaSalida <= ?) or
+       (FechaEntrada >= ? and FechaSalida >= ? and FechaEntrada <= ?) or
+       (FechaEntrada <= ? and FechaSalida <= ? and FechaSalida >= ?))`,
+      [
+        idhabitacion,
+        FechaEntrada,
+        FechaSalida,
+        FechaEntrada,
+        FechaSalida,
+        FechaEntrada,
+        FechaSalida,
+        FechaSalida,
+        FechaEntrada,
+        FechaSalida,
+        FechaEntrada,
+      ],
     );
   },
   async getByCliente(urlSearch: URLSearchParams) {
     const DNICliente = urlSearch.get("DNICliente");
     return await client.query(
-      `select * from fecha_reserva where DNIcliente = '${DNICliente}'`,
+      `select * from fecha_reserva where DNIcliente = ?`,
+      [DNICliente],
     );
   },
   // deno-lint-ignore no-explicit-any
@@ -36,14 +50,25 @@ export default {
         10,
       );
       const _query = await client.query(
-        `insert into fecha_reserva values ('${id}', '${data.fields.FechaEntrada}', '${data.fields.FechaSalida}', '${data.fields.DNICliente}', ${
-          hab[i]
-        }, ${num[i]})`,
+        `insert into fecha_reserva values (?, ?, ?, ?, ?, ?)`,
+        [
+          id,
+          data.fields.FechaEntrada,
+          data.fields.FechaSalida,
+          data.fields.DNICliente,
+          hab[i],
+          num[i],
+        ],
       );
     }
 
     return await client.query(
-      `select CodigoReserva from fecha_reserva where FechaEntrada='${data.fields.FechaEntrada}' and FechaSalida='${data.fields.FechaSalida}' and DNICliente='${data.fields.DNICliente}'`,
+      `select CodigoReserva from fecha_reserva where FechaEntrada = ? and FechaSalida = ? and DNICliente = ?`,
+      [
+        data.fields.FechaEntrada,
+        data.fields.FechaSalida,
+        data.fields.DNICliente,
+      ],
     );
     /*`insert into fecha_reserva values (${id}, ${data.fields.FechaEntrada}, ${data.fields.FechaSalida}, ${data.fields.DNICliente}, ${data.fields.idhabitacion}, ${data.fields.NumeroHabitacion})`,
     );*/
@@ -60,7 +85,8 @@ export default {
   ) {
     const CodigoReserva = await body;
     return await client.query(
-      `delete from fecha_reserva where CodigoReserva='${CodigoReserva}'`,
+      `delete from fecha_reserva where CodigoReserva = ?`,
+      [CodigoReserva],
     );
   },
 };

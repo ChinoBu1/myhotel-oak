@@ -8,20 +8,30 @@ export default {
   async getById(urlSearch: URLSearchParams) {
     const idhabitacion = urlSearch.get("idhabitacion");
     return await client.query(
-      `select * from habitacion where idhabitacion in (${idhabitacion})`,
+      `select * from habitacion where idhabitacion in (?)`,
+      [idhabitacion],
     );
   },
   async getByHotel(urlSearch: URLSearchParams) {
     const idHotel = urlSearch.get("idHotel");
     return await client.query(
-      `select * from habitacion where idhotel = ${idHotel}`,
+      `select * from habitacion where idhotel = ?`,
+      [idHotel],
     );
   },
   // deno-lint-ignore no-explicit-any
   async postHabitacion(formData: FormDataReader | any) {
     const data = await formData.read();
     return await client.query(
-      `insert into habitacion (idhotel,NumeroHabitacion, Capacidad, Categoria, Regimen,Precio) values (${data.fields.idHotel}, ${data.fields.NumeroHabitacion},${data.fields.Capacidad},${data.fields.Categoria}, ${data.fields.Regimen},${data.fields.Precio})`,
+      `insert into habitacion (idhotel,NumeroHabitacion, Capacidad, Categoria, Regimen,Precio) values (?, ?, ?, ?, ?, ?)`,
+      [
+        data.fields.idHotel,
+        data.fields.NumeroHabitacion,
+        data.fields.Capacidad,
+        data.fields.Categoria,
+        data.fields.Regimen,
+        data.fields.Precio,
+      ],
     );
   },
 };

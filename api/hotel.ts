@@ -7,43 +7,60 @@ export default {
   },
   async getById(urlSearch: URLSearchParams) {
     const idHotel = urlSearch.get("idHotel");
-    return await client.query(`select * from hotel where idHotel = ${idHotel}`);
+    return await client.query(`select * from hotel where idHotel = ?`, [
+      idHotel,
+    ]);
   },
   // deno-lint-ignore no-explicit-any
   async postHotel(form: FormDataReader | any) {
     const data = await form.read();
     const ciudad = await client.query(
-      `select * from ubicacion where CodigoPostal = ${data.fields.CodigoPostal}`,
+      `select * from ubicacion where CodigoPostal = ?`,
+      [data.fields.CodigoPostal],
     );
     if (ciudad.length == 0) {
       const _postciudad = client.query(
-        `insert into ubicacion values ('${data.fields.Ciudad}',${data.fields.CodigoPostal})`,
+        `insert into ubicacion values (?, ?)`,
+        [data.fields.Ciudad, data.fields.CodigoPostal],
       );
     }
     return await client.query(
       `insert into hotel (NombreHotel, TelefonoHotel, Direccion, Estrellas, WiFi, Parking, Piscina, CodigoPostal, NIFhostelero) 
-       values ('${data.fields.Nombre}', ${data.fields.Telefono}, '${data.fields.Direccion}', ${data.fields.Estrellas}, ${data.fields.Wifi}, ${data.fields.Parking}, ${data.fields.Piscina}, ${data.fields.CodigoPostal}, ${data.fields.NIFhostelero})`,
+       values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        data.fields.Nombre,
+        data.fields.Telefono,
+        data.fields.Direccion,
+        data.fields.Estrellas,
+        data.fields.Wifi,
+        data.fields.Parking,
+        data.fields.Piscina,
+        data.fields.CodigoPostal,
+        data.fields.NIFhostelero,
+      ],
     );
   },
   async getByAdministrador(urlSearch: URLSearchParams) {
     const NIFhostelero = urlSearch.get("NIFhostelero");
     return await client.query(
-      `select * from hotel where NIFhostelero = ${NIFhostelero}`,
+      `select * from hotel where NIFhostelero = ?`,
+      [NIFhostelero],
     );
   },
   async getByUbicacion(urlSearch: URLSearchParams) {
     const Localizacion = urlSearch.get("Localizacion");
     try {
       const resp = await client.query(
-        `select CodigoPostal from ubicacion where NombreCiudad = '${Localizacion}'`,
+        `select CodigoPostal from ubicacion where NombreCiudad = ?`,
+        [Localizacion],
       );
+      // deno-lint-ignore no-explicit-any
       let hoteles: string | any[] = [];
       for (const CodigoPostal of resp) {
-        console.log(CodigoPostal);
-
         hoteles = hoteles.concat(
           await client.query(
-            `select * from hotel where CodigoPostal = ${CodigoPostal.CodigoPostal}`,
+            `select * from hotel where CodigoPostal = ?`,
+            [CodigoPostal.CodigoPostal],
           ),
         );
       }
