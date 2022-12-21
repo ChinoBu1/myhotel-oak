@@ -767,3 +767,24 @@ thead th {
     margin-bottom: 8px;
     width: 140px;
 }
+
+
+/* Pruebas del carousel */
+.embla {
+    overflow: hidden;
+}
+
+.embla__container {
+    display: flex;
+}
+
+.embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+}
+
+.embla__slide > img {
+    width: 100%;
+    height: 20em;
+    object-fit: cover;
+}

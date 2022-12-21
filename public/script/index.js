@@ -4,6 +4,12 @@ const paraHostelero = document.getElementsByClassName("hostelero");
 const nombre = document.getElementById("nombre");
 const logout = document.getElementById("logout");
 
+// Prara el carousel
+const emblaNode = document.querySelector(".embla");
+const options = { loop: true, draggable: false };
+const plugins = [EmblaCarouselAutoplay()]; // Plugins
+const embla = EmblaCarousel(emblaNode, options, plugins);
+
 logout.addEventListener("click", (_e) => {
   localStorage.removeItem("login");
   sessionStorage.removeItem("login");
