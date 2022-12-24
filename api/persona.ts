@@ -5,12 +5,20 @@ export default {
   async getAll() {
     return await client.query(`select * from persona`);
   },
-  async updatePass(urlSearch: URLSearchParams) {
-    const Pass = urlSearch.get("Pass");
-    const DNI = urlSearch.get("DNI");
+  async updatePass(
+    body:
+      | Promise<Uint8Array>
+      | FormDataReader
+      // deno-lint-ignore no-explicit-any
+      | Promise<any>
+      | Promise<URLSearchParams>
+      | Promise<string>
+      | undefined,
+  ) {
+    const Body = await JSON.parse(await body);
     return await client.query(
       `UPDATE persona SET Pasword = ? WHERE DNI = ?`,
-      [Pass, DNI],
+      [Body.password, Body.DNI],
     );
   },
   async getBiEmailandPass(urlSearch: URLSearchParams) {

@@ -174,5 +174,8 @@ router
   })
   .delete("/api/cliente/reserva.ts", async (ctx) => {
     ctx.response.body = await reserva.deletereserva(ctx.request.body().value);
+  })
+  .patch("/api/persona.ts", async (ctx) => {
+    ctx.response.body = await persona.updatePass(ctx.request.body().value);
   });
 export default router;

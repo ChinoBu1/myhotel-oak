@@ -6,7 +6,7 @@ const logout = document.getElementById("logout");
 
 // Prara el carousel
 const emblaNode = document.querySelector(".embla");
-const options = { loop: true, draggable: false };
+const options = { loop: true, draggable: false, speed: 5 };
 const plugins = [EmblaCarouselAutoplay()]; // Plugins
 const embla = EmblaCarousel(emblaNode, options, plugins);
 

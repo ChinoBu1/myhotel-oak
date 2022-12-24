@@ -10,7 +10,34 @@ for (const prop in Sesion) {
   label.innerHTML = prop;
   sec.appendChild(label);
   const div = document.createElement("div");
-  div.innerHTML = Sesion[prop];
+  if (prop != "Pasword") {
+    div.innerHTML = Sesion[prop];
+  } else {
+    const input = document.createElement("input");
+    input.type = "password";
+    input.readOnly = true;
+    input.value = Sesion[prop];
+    input.style.width = "fit-content";
+    input.style.borderBottom = "0px";
+    div.appendChild(input);
+    const button = document.createElement("button");
+    button.innerHTML = "Cambiar contraseña";
+    button.addEventListener("click", async () => {
+      const DNI = Sesion["DNI"];
+      let password = prompt("Nueva contraseña");
+      if (
+        confirm(`¿Esta seguro de que su nueva contraseña sea ${password}?`) ==
+        true
+      ) {
+        const _resp = await fetch("/api/persona.ts", {
+          method: "PATCH",
+          body: JSON.stringify({ password, DNI }),
+        });
+        //location.replace(window.location.href);
+      }
+    });
+    div.appendChild(button);
+  }
   sec.appendChild(div);
 }
 
@@ -31,6 +58,7 @@ if (Sesion.Rol == "hotelero") {
       if (prop != "idHotel") {
         const label = document.createElement("label");
         label.innerHTML = prop;
+
         div.appendChild(label);
         const div2 = document.createElement("div");
         div2.innerHTML = hotel[prop];
