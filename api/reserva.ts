@@ -1,4 +1,4 @@
-import client from "../db.ts";
+import client from "./db.ts";
 import { FormDataReader } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 
 export default {

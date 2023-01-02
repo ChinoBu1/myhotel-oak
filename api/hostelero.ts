@@ -1,4 +1,4 @@
-import client from "../db.ts";
+import client from "./db.ts";
 
 export default {
   async getAll() {
