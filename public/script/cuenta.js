@@ -24,7 +24,7 @@ for (const prop in Sesion) {
     button.innerHTML = "Cambiar contraseña";
     button.addEventListener("click", async () => {
       const DNI = Sesion["DNI"];
-      let password = prompt("Nueva contraseña");
+      const password = prompt("Nueva contraseña");
       if (
         confirm(`¿Esta seguro de que su nueva contraseña sea ${password}?`) ==
         true
