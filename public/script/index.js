@@ -4,22 +4,22 @@ const paraHostelero = document.getElementsByClassName("hostelero");
 const nombre = document.getElementById("nombre");
 const logout = document.getElementById("logout");
 
-// Prara el carousel
+// Para el carousel
 const emblaNode = document.querySelector(".embla");
 const options = { loop: true, draggable: false, speed: 5 };
 const plugins = [EmblaCarouselAutoplay()]; // Plugins
 const embla = EmblaCarousel(emblaNode, options, plugins);
-
+// LOG OUT
 logout.addEventListener("click", (_e) => {
   localStorage.removeItem("login");
   sessionStorage.removeItem("login");
   location.replace("/");
 });
-
+//COMPRUEBA SI TIENES LA SESIÓN MANTENIDA Y SI ES QUE SI, LA INICIA SOLA
 if (localStorage.getItem("login") && !sessionStorage.getItem("login")) {
   sessionStorage.setItem("login", localStorage.getItem("login"));
 }
-
+//ESCONDE Y MUESTRA LOS BOTONES DEPENDIENDO SI ESTÁ LOGUEADO (lo que pone el nombre y lo quita)
 if (sessionStorage.getItem("login")) {
   const Sesion = JSON.parse(sessionStorage.getItem("login"))[0];
   Array.from(paranosesion).forEach((element) => {
@@ -33,6 +33,7 @@ if (sessionStorage.getItem("login")) {
       element.style.display = "block";
     });
   }
+  
   const ancor = document.createElement("a");
   ancor.href = "/cuenta";
   ancor.style.textDecoration = "none";
@@ -40,7 +41,7 @@ if (sessionStorage.getItem("login")) {
   ancor.innerHTML = Sesion.Nombre + " " + Sesion.Apellidos;
   nombre.appendChild(ancor);
 }
-
+//Formulario de búsqueda
 const form = document.getElementById("busqueda");
 
 const Localizacion = document.getElementById("Localizacion");
@@ -64,6 +65,7 @@ form.addEventListener("submit", (e) => {
     alert("Seleccione una localizacion");
   }
 });
+//Solo deja reservar a partir de la fecha actual
 const hoy = new Date().toISOString().split("T")[0];
 
 form.children.dateEntrada.min = hoy;
