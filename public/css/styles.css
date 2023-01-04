@@ -9,6 +9,7 @@ html {
 }
 
 body {
+    height: 100vh;
     font-size: 16px;
     /*para hacer mas facil medidas*/
     font-family: 'Krub', sans-serif;
@@ -45,9 +46,13 @@ footer {
     background-color: var(--back_color_principal);
     text-align: center;
     margin-top: 2rem;
-    min-height: 100%;
+    /* min-height: 100%; */
     color: #ffffff;
     font-size: 20px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%
 }
 
 footer img {
