@@ -98,9 +98,9 @@ if (Sesion.Rol == "cliente") {
         const div2 = document.createElement("div");
         if (prop == "FechaEntrada" || prop == "FechaSalida") {
           const fecha = new Date(reserva[prop]);
-          div2.innerHTML = `${fecha.getDate()}/${
-            fecha.getMonth() + 1
-          }/${fecha.getFullYear()}`;
+          let mes = fecha.getMonth() + 1;
+          if (mes.toString().length < 2) mes = "0" + mes;
+          div2.innerHTML = `${fecha.getDate()}/${mes}/${fecha.getFullYear()}`;
         } else {
           div2.innerHTML = reserva[prop];
         }

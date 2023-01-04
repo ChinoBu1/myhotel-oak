@@ -46,13 +46,15 @@ const params = Object.fromEntries(URLsearch);
 const Entrada = new Date(params.dateEntrada);
 const Salida = new Date(params.dateSalida);
 
-dateEntrada.innerHTML = `${Entrada.getDate()}/${
-  Entrada.getMonth() + 1
-}/${Entrada.getFullYear()}`;
+let mesEntrada = Entrada.getMonth() + 1;
+if (mesEntrada.toString().length < 2) mesEntrada = "0" + mesEntrada;
 
-dateSalida.innerHTML = `${Salida.getDate()}/${
-  Salida.getMonth() + 1
-}/${Salida.getFullYear()}`;
+dateEntrada.innerHTML = `${Entrada.getDate()}/${mesEntrada}/${Entrada.getFullYear()}`;
+
+let mesSalida = Salida.getMonth() + 1;
+if (mesSalida.toString().length < 2) mesSalida = "0" + mesSalida;
+
+dateSalida.innerHTML = `${Salida.getDate()}/${mesSalida}/${Salida.getFullYear()}`;
 
 const diasDuracion = Math.max(
   (Salida.getTime() - Entrada.getTime()) / (1000 * 3600 * 24),
